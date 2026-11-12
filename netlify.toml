@@ -1,0 +1,31 @@
+[build]
+  command = "node scripts/build-netlify.mjs"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[[redirects]]
+  from = "/proposta-1/*"
+  to = "/proposta-1/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/proposta-2/*"
+  to = "/proposta-2/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/proposta-3/*"
+  to = "/proposta-3/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/proposta-4/*"
+  to = "/proposta-4/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/proposta-5/*"
+  to = "/proposta-5/index.html"
+  status = 200

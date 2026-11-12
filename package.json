@@ -1,0 +1,7 @@
+{
+  "name": "servemais",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build-netlify.mjs"
+  }
+}
