@@ -1,4 +1,4 @@
-import { formatPhone, hourLabel, mapsLink, storeStatus, whatsappLink } from '../domain/hours.js'
+import { formatPhone, hourLabel, storeStatus, whatsappLink } from '../domain/hours.js'
 import { esc } from '../lib/format.js'
 import { state } from '../state/store.js'
 
@@ -31,8 +31,8 @@ export function storeDetail(loja) {
       <div><dt>Dom e feriados</dt><dd>${hourLabel(loja.domAbre)} às ${hourLabel(loja.domFecha)}</dd></div>
     </dl>
     <div class="btn-row">
-      <a class="btn btn-red" href="${mapsLink(loja)}" target="_blank" rel="noopener">Como chegar</a>
-      <button class="btn btn-line" type="button" data-act="ligar" data-tel="${formatPhone(loja.tel)}">Ligar</button>
+      <button class="btn btn-red" type="button" data-act="rota" data-id="${loja.id}">Como chegar</button>
+      <button class="btn btn-line" type="button" data-act="ligar" data-digits="${loja.tel}" data-label="${formatPhone(loja.tel)}">Ligar ${formatPhone(loja.tel)}</button>
       <a class="btn btn-yellow" href="${whatsappLink(hello)}" target="_blank" rel="noopener">WhatsApp</a>
     </div>
     <p class="servicos">${services} <small>(exemplos)</small></p>

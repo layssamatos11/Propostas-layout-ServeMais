@@ -4,7 +4,7 @@ import { CAMPANHAS, SAZONAIS } from '../data/ofertas.js'
 import { homeOffers } from '../domain/query.js'
 import { esc, slug } from '../lib/format.js'
 import { state } from '../state/store.js'
-import { productCard } from '../components/product-card.js'
+import { paintQty, productCard } from '../components/product-card.js'
 import { storeRow } from '../components/store-card.js'
 
 function chips() {
@@ -24,6 +24,7 @@ export function mountInicio() {
   document.querySelectorAll('[data-act="home-cat"]').forEach((button) => {
     button.setAttribute('aria-pressed', button.dataset.cat === state.homeCat ? 'true' : 'false')
   })
+  paintQty()
 }
 
 export function renderInicio() {

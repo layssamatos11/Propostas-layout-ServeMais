@@ -49,12 +49,12 @@ export function paintCommerce() {
     node.textContent = String(count)
     node.hidden = count === 0
   })
-  document.querySelectorAll('[data-add]').forEach((button) => {
-    const qty = state.lista.find((item) => item.id === Number(button.dataset.add))?.qtd || 0
-    button.classList.toggle('in', qty > 0)
-    button.textContent = qty > 0 ? String(qty) : '+'
-    const name = button.dataset.name
-    button.setAttribute('aria-label', qty > 0 ? `${name}: ${qty} na lista. Adicionar mais um` : `Adicionar ${name} à lista`)
+  document.querySelectorAll('[data-qty]').forEach((box) => {
+    const qty = state.lista.find((item) => item.id === Number(box.dataset.qty))?.qtd || 0
+    const count = box.querySelector('[data-count]')
+    const minus = box.querySelector('[data-d="-1"]')
+    if (count) count.textContent = String(qty)
+    if (minus) minus.disabled = qty < 1
   })
   document.querySelectorAll('[data-receipt]').forEach((node) => {
     node.innerHTML = receiptBody()

@@ -1,4 +1,5 @@
 import { faixa } from '../components/chrome.js'
+import { campanhasBlock } from './ofertas.js'
 
 const DESTINOS = [
   ['ofertas', 'Ofertas', 'As promoções da semana, com validade.', 'borda-red'],
@@ -29,6 +30,11 @@ export function inicioPage() {
   <section class="wrap destinos">
     <h2>Para onde você quer ir?</h2>
     <div class="destino-grid">${cards}</div>
+  </section>
+  <section class="wrap campanhas-home">
+    <h2>Campanhas da rede</h2>
+    <p class="olho">Ofertão, Fecha Mês, sazonais e ações especiais.</p>
+    ${campanhasBlock()}
   </section>`
 }
 

@@ -116,7 +116,13 @@
   transition: transform .2s, box-shadow .2s;
 }
 .pcard:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(31, 26, 23, .1) }
-.sector-card { text-decoration: none; min-height: 220px }
+.sector-card { min-height: 240px; }
+.sector-cta {
+  margin-top: auto;
+  align-self: stretch;
+  width: 100%;
+  box-shadow: 0 6px 0 rgba(31, 26, 23, .12);
+}
 .sector-badge { width: 72px; height: 72px; border-radius: 50%; display: grid; place-items: center }
 .ph {
   position: relative;
@@ -165,7 +171,30 @@
   flex: none;
   line-height: 1;
 }
-.add.in { background: var(--ink); color: var(--yellow); font-size: .95rem }
+.qty {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  flex: none;
+  background: #fff;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  padding: 2px;
+}
+.qty button {
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--yellow);
+  color: var(--ink);
+  font-weight: 800;
+  font-size: 1.2rem;
+  cursor: pointer;
+  line-height: 1;
+}
+.qty button:disabled { opacity: .35; cursor: default; }
+.qty [data-count] { min-width: 1.5rem; text-align: center; font-weight: 800; }
 .valid { color: var(--muted); font-size: .75rem }
 
 .camp-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 16px }
@@ -194,15 +223,55 @@
   padding: 20px 22px;
   border: 1px solid var(--line);
   text-decoration: none;
-  display: block;
-  transition: transform .2s;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  transition: transform .2s, box-shadow .2s;
 }
 button.mini { font: inherit; color: inherit; border: 1px solid var(--line) }
-.mini:hover { transform: translateY(-3px) }
-.mini b { display: block; font-family: Poppins, sans-serif; margin-bottom: 4px }
-.mini span { color: var(--muted); font-size: .92rem }
+.mini:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(31, 26, 23, .08) }
+.mini b { display: block; font-family: Poppins, sans-serif; margin-bottom: 2px }
+.mini > span:not(.faixa-cores) { color: var(--muted); font-size: .92rem }
 .mini-season { border-left: 6px solid var(--yellow) }
-.mini-special { border-left: 6px solid var(--red); text-align: left; width: 100%; cursor: pointer }
+.mini-special {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  text-align: left;
+  width: 100%;
+  cursor: pointer;
+  padding-top: 28px;
+}
+.faixa-cores {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 10px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+.faixa-cores i { display: block; height: 100% }
+.faixa-cores i:nth-child(1) { background: #2f6bff }
+.faixa-cores i:nth-child(2) { background: #e10613 }
+.faixa-cores i:nth-child(3) { background: #22c55e }
+.faixa-cores i:nth-child(4) { background: #3ec6ff }
+.faixa-cores i:nth-child(5) { background: #ffc400 }
+.faixa-cores i:nth-child(6) { background: #c6a15b }
+.mini-cta {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 12px;
+  min-height: 36px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  font-style: normal;
+  font-weight: 800;
+  font-size: .88rem;
+}
+.mini-special .mini-cta { background: var(--red) }
+.mini-season .mini-cta { background: var(--yellow); color: var(--ink) }
 .sectors { display: grid; grid-template-columns: repeat(7, 1fr); gap: 12px }
 .sector { text-decoration: none; text-align: center; background: transparent; border: 0; cursor: pointer; font-weight: 600; padding: 0 }
 .sector i {
@@ -232,6 +301,17 @@ button.mini { font: inherit; color: inherit; border: 1px solid var(--line) }
 .banner .orb { width: 200px; height: 200px; background: #F6A90A; right: -30px; top: -70px }
 .banner .txt { position: relative; z-index: 1 }
 .banner-title { margin: 8px 0 }
+.banner-actions { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 10px; }
+.banner-cta {
+  background: var(--ink);
+  color: var(--yellow);
+  border-color: var(--ink);
+  min-height: 52px;
+  padding: 0 24px;
+  font-size: 1rem;
+  box-shadow: 0 6px 0 rgba(31, 26, 23, .18);
+}
+.banner-cta:hover { background: #111; color: var(--yellow); transform: translateY(-2px) }
 
 .intro { display: grid; grid-template-columns: 1.05fr .95fr; gap: 28px; align-items: center }
 .kicker-dark { color: var(--red); font-weight: 800; letter-spacing: .08em; font-size: .78rem }

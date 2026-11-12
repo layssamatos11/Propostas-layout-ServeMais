@@ -1,6 +1,25 @@
-import { discount, esc, money } from '../lib/format.js'
-import { state } from '../state/store.js'
 import { precoLocal } from '../domain/price.js'
+import { discount, esc, money } from '../lib/format.js'
+import { qtyOf, state } from '../state/store.js'
+
+function qtyBox(id, name, qty) {
+  const n = Number(qty) || 0
+  return `<div class="qty" data-qty="${id}">
+    <button type="button" data-act="qtd" data-id="${id}" data-d="-1" aria-label="Diminuir ${esc(name)}"${n ? '' : ' disabled'}>−</button>
+    <span data-count>${n}</span>
+    <button type="button" data-act="qtd" data-id="${id}" data-d="1" aria-label="Aumentar ${esc(name)}">+</button>
+  </div>`
+}
+
+export function paintQty() {
+  document.querySelectorAll('[data-qty]').forEach((box) => {
+    const qty = qtyOf(box.dataset.qty)
+    const count = box.querySelector('[data-count]')
+    const minus = box.querySelector('[data-d="-1"]')
+    if (count) count.textContent = String(qty)
+    if (minus) minus.disabled = qty < 1
+  })
+}
 
 const SELO = { oferta: 'Oferta', leve: 'Leve 3', novo: 'Novo' }
 
@@ -20,7 +39,7 @@ export function productCard(item) {
         <p class="preco-de">${money(de)}</p>
         <p class="preco">${money(preco)}</p>
       </div>
-      <button class="mais" type="button" data-act="anotar" data-nome="${esc(item.nome)}" aria-label="Anotar ${esc(item.nome)}">+</button>
+      ${qtyBox(item.id, item.nome, qtyOf(item.id))}
     </div>
   </article>`
 }

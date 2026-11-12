@@ -1,5 +1,9 @@
+import { paintQty } from '../components/product-card.js'
 import { closeDialog, closeMenu, openDialog, openMenu } from '../components/overlays.js'
 import { toast } from '../components/toast.js'
+import { lojaById } from '../data/lojas.js'
+import { dialOrCopy, openDirections } from '../domain/hours.js'
+import { qtyOf, setQty } from '../state/store.js'
 import { slug } from '../lib/format.js'
 import { campanhaById } from '../pages/ofertas.js'
 import { validateContato } from '../pages/contato.js'
@@ -25,6 +29,26 @@ const actions = {
       redes: 'Os perfis oficiais ainda serão informados.',
     }
     toast(copy[el.dataset.canal] || 'Canal a informar.')
+  },
+  rota(el) {
+    const loja = lojaById(el.dataset.id)
+    if (!loja) return
+    openDirections(loja).then((mode) => {
+      if (mode === 'ok') toast('Rota a partir da sua localização.')
+      else toast('Não lemos a localização. A rota abre até a unidade.')
+    })
+  },
+  ligar(el) {
+    const label = el.dataset.label
+    dialOrCopy(el.dataset.digits, label).then((mode) => {
+      if (mode === 'copy') toast(`Número copiado: ${label}`)
+      else if (mode === 'fail') toast(`Número: ${label}`)
+    })
+  },
+  qtd(el) {
+    const id = el.dataset.id
+    setQty(id, qtyOf(id) + Number(el.dataset.d))
+    paintQty()
   },
   campanha(el) {
     const camp = campanhaById(el.dataset.campanha)

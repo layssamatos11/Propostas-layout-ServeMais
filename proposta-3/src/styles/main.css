@@ -215,6 +215,12 @@ p { margin: 0.35rem 0 0; }
 .produto h3, .news-card h3, .loja h2, .vaga h3 { font-size: 1.15rem; }
 .produto p, .produto small, .loja p, .vaga p { color: var(--muted); display: block; }
 .produto strong { display: block; margin-top: 8px; font-size: 1.35rem; }
+.produto-preco { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 8px; }
+.produto-preco strong { margin-top: 0; }
+.qty { display: inline-flex; align-items: center; gap: 2px; border: 2px solid var(--ink); border-radius: 999px; padding: 2px; background: #fff; }
+.qty button { width: 36px; height: 36px; border: 0; border-radius: 50%; background: var(--yellow); color: var(--ink); font-weight: 800; font-size: 1.2rem; cursor: pointer; line-height: 1; }
+.qty button:disabled { opacity: .35; cursor: default; }
+.qty [data-count] { min-width: 1.4rem; text-align: center; font-weight: 800; }
 .selo {
   display: inline-flex;
   background: var(--red);
@@ -224,22 +230,68 @@ p { margin: 0.35rem 0 0; }
   font-size: 0.72rem;
   font-weight: 800;
 }
-.campanhas { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+.campanhas { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 16px; }
+.campanhas-home { padding: 8px 0 48px; }
 .campanha {
-  min-height: 120px;
-  border: 0;
-  border-radius: 18px;
-  padding: 18px;
-  text-align: left;
-  color: #fff;
-  cursor: pointer;
+  min-height: 190px;
+  border-radius: 22px;
+  padding: 22px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  align-items: flex-start;
+  gap: 8px;
+  text-align: left;
 }
-.campanha strong { font-size: 1.5rem; }
-.campanha-ofertao { background: #c81e1e; }
-.campanha-fecha-mes { background: var(--red); }
+.campanha span { font-weight: 800; letter-spacing: .04em; text-transform: uppercase; font-size: .78rem; }
+.campanha strong { font-size: clamp(1.35rem, 2vw, 1.8rem); line-height: 1.15; }
+.campanha-ofertao { background: var(--red); color: #fff; }
+.campanha-fecha { background: var(--yellow); color: var(--ink); }
+.campanha-sazonal, .campanha-especial {
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  box-shadow: 0 10px 24px rgba(22, 24, 29, 0.05);
+}
+.campanha-sazonal {
+  border-left: 8px solid var(--yellow);
+  background: linear-gradient(135deg, #fff9e8 0%, #fff 48%);
+}
+.campanha-especial {
+  border-left: 8px solid var(--pink);
+  background: linear-gradient(135deg, #fff0f4 0%, #fff 52%);
+  padding-top: 28px;
+}
+.campanha-desc { margin: 0; color: var(--muted); font-size: .92rem; max-width: 32ch; }
+.faixa-mini {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 8px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+.faixa-mini i { display: block; height: 100%; }
+.faixa-mini i:nth-child(1) { background: #2f6bff; }
+.faixa-mini i:nth-child(2) { background: #e10613; }
+.faixa-mini i:nth-child(3) { background: #22c55e; }
+.faixa-mini i:nth-child(4) { background: #3ec6ff; }
+.faixa-mini i:nth-child(5) { background: #ffc400; }
+.faixa-mini i:nth-child(6) { background: #c6a15b; }
+.campanha .btn {
+  margin-top: auto;
+  min-height: 48px;
+  padding: 0 20px;
+  border-radius: 999px;
+  font-weight: 800;
+  box-shadow: 0 4px 0 rgba(22, 24, 29, 0.12);
+}
+.campanha-ofertao .btn-yellow,
+.campanha-sazonal .btn-yellow { background: var(--yellow); color: var(--ink); }
+.campanha-fecha .btn-navy { background: var(--navy); color: #fff; }
+.campanha-especial .btn-red { background: var(--red); color: #fff; }
+.loja-acoes { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.loja .loja-acoes .btn { margin-top: 0; }
 .vitrine h2 { margin: 28px 0 8px; }
 .empty { padding: 16px; background: var(--wash); border-radius: 12px; }
 

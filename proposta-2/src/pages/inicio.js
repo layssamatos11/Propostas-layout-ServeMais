@@ -90,8 +90,8 @@ export function inicioPage() {
         <h2><em>mês</em></h2>
         <a class="btn btn-red" href="#ofertas/fecha-mes">Conferir</a>
       </article>
-      <a class="camp-link" href="#ofertas/sazonais"><strong>Campanhas sazonais</strong><span>Páscoa, Natal, Festa Junina (exemplos)</span></a>
-      <button class="camp-link" type="button" data-act="acoes"><strong>Ações especiais</strong><span>Dias de desconto e parcerias da rede</span></button>
+      <a class="camp-link camp-sazonal" href="#ofertas/sazonais"><strong>Campanhas sazonais</strong><span>Páscoa, Natal, Festa Junina (exemplos)</span><em>Conferir</em></a>
+      <button class="camp-link camp-especial" type="button" data-act="acoes"><strong>Ações especiais</strong><span>Dias de desconto e parcerias da rede</span><em>Conferir</em></button>
     </div>
   </section>
   <section class="sec sec-sand">

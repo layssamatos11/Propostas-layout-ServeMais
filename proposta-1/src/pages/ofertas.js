@@ -47,8 +47,10 @@ export function ofertasPage() {
         <span class="kicker banner-kicker">FECHA MÊS</span>
         <h2 class="banner-title">Campanha em destaque</h2>
         <p>Banner de campanha com período de validade, regras resumidas e botão de ação (exemplo).</p>
+        <div class="banner-actions">
+          <button class="btn banner-cta" type="button" data-act="regulamento" data-camp="Fecha Mês">Ver regulamento</button>
+        </div>
       </div>
-      <button class="btn btn-r" type="button" data-act="regulamento" data-camp="Fecha Mês">Ver regulamento</button>
     </div>
     <div class="center">
       <button class="btn btn-line" type="button" id="loadMore" data-act="mais">Carregar mais ofertas</button>

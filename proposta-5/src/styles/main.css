@@ -117,7 +117,7 @@ p { line-height: 1.5; }
 .grade-4 { grid-template-columns: repeat(4, 1fr); }
 .grade-3 { grid-template-columns: repeat(3, 1fr); }
 .grade-2 { grid-template-columns: repeat(2, 1fr); }
-.produto { background: var(--paper); border-radius: 18px; padding: 12px; display: grid; grid-template-columns: 1fr auto; gap: 4px 8px; border: 2px solid transparent; }
+.produto { background: var(--paper); border-radius: 18px; padding: 12px; display: grid; grid-template-columns: 1fr auto; gap: 4px 8px; border: 2px solid transparent; align-items: end; }
 .produto:hover { border-color: var(--ink); }
 .foto { grid-column: 1 / -1; min-height: 140px; border-radius: 12px; display: grid; place-items: end start; padding: 10px; position: relative; }
 .foto span, .foto-news { font-size: .82rem; background: rgba(255, 253, 248, .88); padding: 4px 8px; border-radius: 8px; }
@@ -127,7 +127,11 @@ p { line-height: 1.5; }
 .preco-de { margin: 8px 0 0; text-decoration: line-through; color: #6d625c; font-family: "DM Mono", monospace; }
 .preco { margin: 0; font-family: "DM Mono", monospace; font-weight: 700; font-size: 1.35rem; }
 .produto h3 { grid-column: 1; margin: 0; font-size: 1rem; }
-.emb { margin: 0; color: #6d625c; }
+.emb { margin: 0; color: #6d625c; grid-column: 1; }
+.qty { display: inline-flex; align-items: center; gap: 2px; border: 2px solid var(--ink); border-radius: 999px; padding: 2px; background: #fff; grid-column: 2; grid-row: 3 / 5; align-self: end; }
+.qty button { width: 36px; height: 36px; border: 0; border-radius: 50%; background: var(--yellow); color: var(--ink); font-weight: 800; font-size: 1.2rem; cursor: pointer; line-height: 1; }
+.qty button:disabled { opacity: .35; cursor: default; }
+.qty [data-count] { min-width: 1.4rem; text-align: center; font-weight: 800; }
 .mais { background: var(--yellow); border: 0; border-radius: 50%; width: 48px; height: 48px; font-size: 1.4rem; align-self: end; }
 .mais.in { background: var(--red); color: white; }
 
@@ -142,14 +146,51 @@ p { line-height: 1.5; }
 
 .campanhas, .camp-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
 .camp, .camp-link {
-  text-align: left; border: 0; border-radius: 18px; padding: 18px; min-height: 140px; color: white;
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+  border: 0;
+  border-radius: 18px;
+  padding: 18px;
+  min-height: 140px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 .camp-red { background: var(--red); }
 .camp-dark { background: var(--ink); }
-.camp span, .camp-link span { display: block; font-family: Fraunces, serif; font-style: italic; font-size: 1.4rem; }
-.camp strong { font-family: "Archivo Black", sans-serif; font-size: 2rem; display: block; }
-.camp b { display: inline-flex; margin-top: 12px; background: var(--yellow); color: var(--ink); border-radius: 999px; padding: 8px 12px; }
+.camp span, .camp-link span:not(.faixa-mini) { display: block; font-family: Fraunces, serif; font-style: italic; font-size: 1.4rem; }
+.camp strong, .camp-link strong { font-family: "Archivo Black", sans-serif; font-size: 1.35rem; display: block; line-height: 1.15; }
+.camp b, .camp-link b {
+  display: inline-flex;
+  margin-top: auto;
+  background: var(--yellow);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-weight: 800;
+}
 .camp-link { background: var(--sand); color: var(--ink); }
+.camp-sazonal { border-left: 8px solid var(--yellow); background: linear-gradient(135deg, #fff4d4, var(--sand)); }
+.camp-especial { border-left: 8px solid var(--red); background: linear-gradient(135deg, #ffe8e4, var(--sand)); padding-top: 28px; }
+.camp-especial b { background: var(--red); color: #fff; }
+.faixa-mini {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 8px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  width: 100%;
+}
+.faixa-mini i { display: block; height: 100%; }
+.faixa-mini i:nth-child(1) { background: #2f6bff; }
+.faixa-mini i:nth-child(2) { background: #e10613; }
+.faixa-mini i:nth-child(3) { background: #22c55e; }
+.faixa-mini i:nth-child(4) { background: #3ec6ff; }
+.faixa-mini i:nth-child(5) { background: #ffc400; }
+.faixa-mini i:nth-child(6) { background: #c6a15b; }
 
 .lista-home, .job-layout, .contato-layout, .lojas-layout, .offers-layout, .casa, .jornal {
   display: grid; gap: 22px; align-items: start;

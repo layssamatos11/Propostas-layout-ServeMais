@@ -1,4 +1,4 @@
-import { formatPhone, horario, mapsLink } from '../domain/hours.js'
+import { formatPhone, horario } from '../domain/hours.js'
 import { esc } from '../lib/format.js'
 
 export function storeCard(loja) {
@@ -8,6 +8,9 @@ export function storeCard(loja) {
     <p><b>Endereço:</b> ${esc(loja.end)}, ${esc(loja.bairro)}</p>
     <p><b>Horário:</b> ${horario(loja)}</p>
     <p><b>Telefone:</b> ${formatPhone(loja.tel)}</p>
-    <a class="btn btn-red" href="${mapsLink(loja)}" target="_blank" rel="noopener">Abrir no Google Maps</a>
+    <div class="loja-acoes">
+      <button class="btn btn-red" type="button" data-act="rota" data-id="${loja.id}">Como chegar</button>
+      <button class="btn btn-line" type="button" data-act="ligar" data-digits="${loja.tel}" data-label="${formatPhone(loja.tel)}">Ligar ${formatPhone(loja.tel)}</button>
+    </div>
   </article>`
 }

@@ -5,15 +5,12 @@ import { esc, money } from '../lib/format.js'
 import { listCount, listTotal, qtyOf, setQty, state } from '../state/store.js'
 
 export function paintQty() {
-  document.querySelectorAll('[data-add]').forEach((button) => {
-    const qty = qtyOf(button.dataset.add)
-    button.classList.toggle('in', qty > 0)
-    button.textContent = qty > 0 ? String(qty) : '+'
-    const name = button.dataset.name
-    button.setAttribute(
-      'aria-label',
-      qty > 0 ? `${name}: ${qty} na lista. Adicionar mais um` : `Adicionar ${name} à lista`,
-    )
+  document.querySelectorAll('[data-qty]').forEach((box) => {
+    const qty = qtyOf(box.dataset.qty)
+    const count = box.querySelector('[data-count]')
+    const minus = box.querySelector('[data-d="-1"]')
+    if (count) count.textContent = String(qty)
+    if (minus) minus.disabled = qty < 1
   })
   const count = String(listCount())
   document.getElementById('fabCount').textContent = count

@@ -3,7 +3,16 @@ import { adjustPrice } from '../domain/pricing.js'
 import { setorByName } from '../data/setores.js'
 import { esc, money } from '../lib/format.js'
 import { icon } from '../lib/icons.js'
-import { state } from '../state/store.js'
+import { qtyOf, state } from '../state/store.js'
+
+function qtyBox(id, name, qty) {
+  const n = Number(qty) || 0
+  return `<div class="qty" data-qty="${id}">
+    <button type="button" data-act="qtd" data-id="${id}" data-d="-1" data-name="${esc(name)}" aria-label="Diminuir ${esc(name)}"${n ? '' : ' disabled'}>−</button>
+    <span data-count>${n}</span>
+    <button type="button" data-act="qtd" data-id="${id}" data-d="1" data-name="${esc(name)}" aria-label="Aumentar ${esc(name)}">+</button>
+  </div>`
+}
 
 export function productCard(product) {
   const setor = setorByName(product.cat)
@@ -25,7 +34,7 @@ export function productCard(product) {
         <h3>${esc(product.nome)}</h3>
         <p>${esc(product.det)}</p>
       </div>
-      <button class="plus" type="button" data-act="add" data-add="${product.id}" data-name="${esc(product.nome)}">+</button>
+      ${qtyBox(product.id, product.nome, qtyOf(product.id))}
     </div>
   </article>`
 }

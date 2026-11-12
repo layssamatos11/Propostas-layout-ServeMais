@@ -82,10 +82,13 @@ export function inicioPage() {
         <a class="mini mini-season" href="#ofertas/sazonais">
           <b>Campanhas sazonais</b>
           <span>Páscoa, Natal e Festa Junina (exemplos).</span>
+          <em class="mini-cta">Conferir</em>
         </a>
         <button class="mini mini-special" type="button" data-act="acoes">
+          <span class="faixa-cores" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
           <b>Ações especiais</b>
           <span>Dias de desconto e parcerias da rede.</span>
+          <em class="mini-cta">Conferir</em>
         </button>
       </div>
     </div>

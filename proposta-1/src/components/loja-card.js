@@ -1,5 +1,5 @@
 import { LOJAS } from '../data/lojas.js'
-import { formatPhone, hourLabel, mapsLink, storeStatus } from '../domain/hours.js'
+import { formatPhone, hourLabel, storeStatus } from '../domain/hours.js'
 import { esc } from '../lib/format.js'
 import { state } from '../state/store.js'
 
@@ -22,9 +22,9 @@ export function lojaCard(loja) {
       </div>
     </div>
     <div class="loja-actions">
-      <a class="btn btn-r" href="${mapsLink(loja)}" target="_blank" rel="noopener">Como chegar</a>
-      <button class="btn btn-line" type="button" data-act="ligar" data-tel="${formatPhone(loja.tel)}">Ligar</button>
-      <button class="btn btn-y" type="button" data-act="usar-loja" data-id="${loja.id}">${selected ? 'Preços desta unidade' : 'Ver preços'}</button>
+      <button class="btn btn-r" type="button" data-act="rota" data-id="${loja.id}">Como chegar</button>
+      <button class="btn btn-line" type="button" data-act="ligar" data-digits="${loja.tel}" data-label="${formatPhone(loja.tel)}">Ligar ${formatPhone(loja.tel)}</button>
+      <a class="btn btn-y" href="#ofertas" data-act="usar-loja" data-id="${loja.id}">Ver preços</a>
     </div>
   </article>`
 }

@@ -1,7 +1,7 @@
 import { LOJAS, lojaById } from '../data/lojas.js'
 import { CIDADES } from '../data/site.js'
 import { filteredStores } from '../domain/query.js'
-import { formatPhone, horario, mapsLink, storeStatus } from '../domain/hours.js'
+import { formatPhone, horario, storeStatus } from '../domain/hours.js'
 import { esc } from '../lib/format.js'
 import { state } from '../state/store.js'
 
@@ -71,8 +71,8 @@ function callout(loja) {
     <p>${esc(loja.end)} · ${esc(loja.bairro)} · ${esc(loja.cidade)}</p>
     <p>${esc(horario(loja))}</p>
     <div class="btn-row">
-      <a class="btn btn-red" href="${mapsLink(loja)}" target="_blank" rel="noopener">Como chegar</a>
-      <a class="btn btn-line" href="tel:+55${loja.tel}">Ligar ${formatPhone(loja.tel)}</a>
+      <button class="btn btn-red" type="button" data-act="rota" data-id="${loja.id}">Como chegar</button>
+      <button class="btn btn-line" type="button" data-act="ligar" data-digits="${loja.tel}" data-label="${formatPhone(loja.tel)}">Ligar ${formatPhone(loja.tel)}</button>
       <button class="btn btn-line" type="button" data-act="zap">WhatsApp</button>
     </div>
     <p>${loja.servicos.map(esc).join(' · ')} (exemplos)</p>`

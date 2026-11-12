@@ -14,12 +14,6 @@ export function ofertasPage() {
     const on = state.cat === cat
     return `<button type="button" data-act="cat" data-cat="${esc(cat)}"${pressed(on)}>${esc(cat)}</button>`
   }).join('')
-  const camps = CAMPANHAS.map((camp) => {
-    return `<button class="campanha campanha-${camp.id}" type="button" data-act="campanha" data-campanha="${camp.id}">
-      <strong>${esc(camp.nome)}</strong>
-      <span>Banner e validade da campanha [a fornecer]</span>
-    </button>`
-  }).join('')
   return `<section class="hero-ofertas">
     <div class="wrap">
       <p class="pill pill-red">Ofertas da semana</p>
@@ -31,7 +25,7 @@ export function ofertasPage() {
   <section class="wrap vitrine">
     <div class="produtos" id="offerGrid"></div>
     <h2>Campanhas</h2>
-    <div class="campanhas">${camps}</div>
+    ${campanhasBlock()}
   </section>`
 }
 
@@ -47,4 +41,32 @@ export function mountOfertas() {
 
 export function campanhaById(id) {
   return CAMPANHAS.find((item) => item.id === id)
+}
+
+export function campanhasBlock() {
+  return `<div class="campanhas">
+    <article class="campanha campanha-ofertao">
+      <span>Ofertão da semana</span>
+      <strong>Toda semana, preço de verdade.</strong>
+      <button class="btn btn-yellow" type="button" data-act="campanha" data-campanha="ofertao">Conferir</button>
+    </article>
+    <article class="campanha campanha-fecha">
+      <span>Fecha Mês</span>
+      <strong>Economia para fechar o mês.</strong>
+      <button class="btn btn-navy" type="button" data-act="campanha" data-campanha="fecha-mes">Conferir</button>
+    </article>
+    <article class="campanha campanha-sazonal">
+      <span>Campanhas sazonais</span>
+      <strong>Páscoa, Natal e Festa Junina.</strong>
+      <p class="campanha-desc">Datas e períodos oficiais ainda serão definidos pela rede.</p>
+      <button class="btn btn-yellow" type="button" data-act="campanha" data-campanha="sazonais">Conferir</button>
+    </article>
+    <article class="campanha campanha-especial">
+      <span class="faixa-mini" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+      <span>Ações especiais</span>
+      <strong>Dias de desconto e parcerias da rede.</strong>
+      <p class="campanha-desc">Calendário oficial publicado aqui quando a campanha for lançada.</p>
+      <button class="btn btn-red" type="button" data-act="campanha" data-campanha="acoes">Conferir</button>
+    </article>
+  </div>`
 }

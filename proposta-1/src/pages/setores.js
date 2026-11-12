@@ -4,12 +4,12 @@ import { icon } from '../lib/icons.js'
 
 export function setoresPage() {
   const cards = SETORES.map((setor) => {
-    return `<a class="pcard sector-card" href="#ofertas/${slug(setor.nome)}">
+    return `<article class="pcard sector-card">
       <i class="sector-badge" style="background:${setor.cor}">${icon(setor.icon, setor.tinta)}</i>
       <h3 class="mt-8">${esc(setor.nome)}</h3>
       <p class="unit">${esc(setor.desc)}</p>
-      <span class="note">Ver ofertas</span>
-    </a>`
+      <a class="btn btn-y sector-cta" href="#ofertas/${slug(setor.nome)}" role="button">Ver ofertas</a>
+    </article>`
   }).join('')
 
   return `<section class="wrap page-hero">

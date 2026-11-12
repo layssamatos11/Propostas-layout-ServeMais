@@ -1,10 +1,12 @@
 import { storeOptions } from '../components/chrome.js'
 import { closeDialog, closeMenu, openDialog, openMenu } from '../components/overlays.js'
+import { paintQty } from '../components/product-card.js'
 import { paintCommerce } from '../components/receipt.js'
 import { toast } from '../components/toast.js'
 import { MOMENTOS, ROOMS } from '../data/felita.js'
 import { lojaById, LOJAS } from '../data/lojas.js'
 import { CAMPANHAS } from '../data/site.js'
+import { dialOrCopy, openDirections } from '../domain/hours.js'
 import { nearestByCoords } from '../domain/price.js'
 import { slug } from '../lib/format.js'
 import { validateContato } from '../pages/contato.js'
@@ -98,11 +100,36 @@ const actions = {
     const id = Number(el.dataset.add)
     setQty(id, qtyOf(id) + 1)
     paintCommerce()
+    paintQty()
     toast(`Anotado: ${el.dataset.name}. A lista fica neste aparelho.`)
+  },
+  qtd(el) {
+    const id = Number(el.dataset.id)
+    const next = qtyOf(id) + Number(el.dataset.d)
+    setQty(id, next)
+    paintCommerce()
+    paintQty()
+    if (Number(el.dataset.d) > 0) toast(`Anotado: ${el.dataset.name}. A lista fica neste aparelho.`)
+  },
+  rota(el) {
+    const loja = lojaById(el.dataset.id)
+    if (!loja) return
+    openDirections(loja).then((mode) => {
+      if (mode === 'ok') toast('Rota a partir da sua localização.')
+      else toast('Não lemos a localização. A rota abre até a unidade.')
+    })
+  },
+  ligar(el) {
+    const label = el.dataset.label
+    dialOrCopy(el.dataset.digits, label).then((mode) => {
+      if (mode === 'copy') toast(`Número copiado: ${label}`)
+      else if (mode === 'fail') toast(`Número: ${label}`)
+    })
   },
   tirar(el) {
     removeItem(el.dataset.id)
     paintCommerce()
+    paintQty()
   },
   imprimir() {
     window.print()

@@ -1,6 +1,9 @@
+import { paintQty } from '../components/product-card.js'
 import { closeDialog, closeMenu, openDialog, openMenu } from '../components/overlays.js'
 import { toast } from '../components/toast.js'
 import { itemById } from '../data/felita.js'
+import { lojaById } from '../data/lojas.js'
+import { dialOrCopy, openDirections } from '../domain/hours.js'
 import { esc, slug } from '../lib/format.js'
 import { mountFelita, quizHtml } from '../pages/felita.js'
 import { mountInicio } from '../pages/inicio.js'
@@ -10,7 +13,7 @@ import { mountOfertas } from '../pages/ofertas.js'
 import { validateContato } from '../pages/contato.js'
 import { validateNews } from '../pages/noticias.js'
 import { validateJob } from '../pages/trabalhe.js'
-import { setUnidade, state } from '../state/store.js'
+import { qtyOf, setQty, setUnidade, state } from '../state/store.js'
 import { forceRender } from './router.js'
 
 function go(hash) {
@@ -56,6 +59,26 @@ const actions = {
   },
   anotar(el) {
     toast(`Anotado: ${el.dataset.nome}. Nesta proposta nada vai para um carrinho.`)
+  },
+  rota(el) {
+    const loja = lojaById(el.dataset.id)
+    if (!loja) return
+    openDirections(loja).then((mode) => {
+      if (mode === 'ok') toast('Rota a partir da sua localização.')
+      else toast('Não lemos a localização. A rota abre até a unidade.')
+    })
+  },
+  ligar(el) {
+    const label = el.dataset.label
+    dialOrCopy(el.dataset.digits, label).then((mode) => {
+      if (mode === 'copy') toast(`Número copiado: ${label}`)
+      else if (mode === 'fail') toast(`Número: ${label}`)
+    })
+  },
+  qtd(el) {
+    const id = el.dataset.id
+    setQty(id, qtyOf(id) + Number(el.dataset.d))
+    paintQty()
   },
   'home-cat'(el) {
     state.homeCat = el.dataset.cat

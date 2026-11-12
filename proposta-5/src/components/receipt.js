@@ -1,3 +1,4 @@
+import { paintQty } from './product-card.js'
 import { offerById } from '../data/ofertas.js'
 import { adjustPrice } from '../domain/price.js'
 import { esc, money } from '../lib/format.js'
@@ -62,6 +63,7 @@ export function paintCommerce() {
     const name = button.dataset.name
     button.setAttribute('aria-label', qty > 0 ? `${name}: ${qty} na lista. Adicionar mais um` : `Adicionar ${name} à lista`)
   })
+  paintQty()
   const html = receiptBody()
   document.querySelectorAll('[data-receipt]').forEach((node) => {
     node.innerHTML = html

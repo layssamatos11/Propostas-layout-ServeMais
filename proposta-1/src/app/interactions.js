@@ -3,6 +3,7 @@ import { closeDialog, closeLista, closeMenu, openDialog, openLista, openMenu } f
 import { changeQty, paintQty, renderLista } from '../components/shopping-list.js'
 import { toast } from '../components/toast.js'
 import { lojaById } from '../data/lojas.js'
+import { dialOrCopy, openDirections } from '../domain/hours.js'
 import { slug } from '../lib/format.js'
 import { mountInicio } from '../pages/inicio.js'
 import { mountLojas } from '../pages/lojas.js'
@@ -79,12 +80,25 @@ const actions = {
     if (card) card.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
   },
   ligar(el) {
-    toast(`Telefone demonstrativo: ${el.dataset.tel}`)
+    const label = el.dataset.label || el.dataset.tel
+    dialOrCopy(el.dataset.digits || el.dataset.tel, label).then((mode) => {
+      if (mode === 'copy') toast(`Número copiado: ${label}`)
+      else if (mode === 'fail') toast(`Número: ${label}`)
+    })
+  },
+  rota(el) {
+    const loja = lojaById(el.dataset.id)
+    if (!loja) return
+    openDirections(loja).then((mode) => {
+      if (mode === 'ok') toast('Rota a partir da sua localização.')
+      else toast('Não lemos a localização. A rota abre até a unidade.')
+    })
   },
   'usar-loja'(el) {
     setPreferredStore(el.dataset.id)
-    refreshPrices()
     toast(`Preços da ${lojaById(state.loja).nome} (exemplo)`)
+    if ((location.hash || '') !== '#ofertas') location.hash = '#ofertas'
+    else refreshPrices()
   },
   social() {
     toast('O perfil oficial da rede ainda será informado.')

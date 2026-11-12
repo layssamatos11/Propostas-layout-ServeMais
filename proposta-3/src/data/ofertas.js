@@ -14,6 +14,8 @@ export const OFERTAS = [
 ]
 
 export const CAMPANHAS = [
-  { id: 'ofertao', nome: 'Ofertão', texto: 'Banner e validade da campanha ainda serão fornecidos pela rede. Este bloco mostra o lugar do Ofertão.' },
-  { id: 'fecha-mes', nome: 'Fecha Mês', texto: 'Banner e validade da campanha ainda serão fornecidos pela rede. Este bloco mostra o lugar do Fecha Mês.' },
+  { id: 'ofertao', nome: 'Ofertão da semana', texto: 'Toda semana, preço de verdade. O banner, o período e as regras entram quando a rede publicar a campanha.' },
+  { id: 'fecha-mes', nome: 'Fecha Mês', texto: 'Fecha Mês com economia. O período, as lojas participantes e o regulamento serão informados pela rede.' },
+  { id: 'sazonais', nome: 'Campanhas sazonais', texto: 'Páscoa, Natal e Festa Junina são exemplos. O período ainda será definido pela rede.' },
+  { id: 'acoes', nome: 'Ações especiais', texto: 'Dias de desconto e parcerias da rede. O calendário oficial será publicado aqui. Este texto é um exemplo.' },
 ]

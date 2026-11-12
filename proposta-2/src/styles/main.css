@@ -129,26 +129,50 @@ p { margin: 0.4rem 0 0; }
 
 #topo { position: sticky; top: 0; z-index: 5; background: var(--paper); border-bottom: 1px solid transparent; }
 #topo.scrolled { border-bottom-color: var(--line); box-shadow: 0 8px 24px rgba(35, 24, 21, 0.06); }
-.bar { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; min-height: 76px; display: flex; align-items: center; gap: 10px; }
+.bar {
+  width: min(var(--max), calc(100% - 32px));
+  margin: 0 auto;
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  gap: 10px 16px;
+  padding: 8px 0;
+}
 .logo { flex: 0 0 auto; }
-.logo img { height: 52px; width: auto; }
-.desk-nav { display: flex; gap: 2px; flex: 1; min-width: 0; }
+.logo img { height: 48px; width: auto; }
+.desk-nav {
+  display: flex;
+  gap: 2px;
+  flex: 1 1 auto;
+  min-width: 0;
+  justify-content: center;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.desk-nav::-webkit-scrollbar { display: none; }
 .desk-nav a {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 48px;
-  padding: 4px 6px;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 10px;
   text-decoration: none;
   font-weight: 700;
-  font-size: 0.78rem;
+  font-size: 0.9rem;
   line-height: 1.15;
-  border-radius: 8px;
+  border-radius: 999px;
   white-space: nowrap;
 }
-.header-cta { flex: 0 0 auto; white-space: nowrap; padding: 0 12px; font-size: 0.88rem; }
-.desk-nav a small { font-family: var(--mono); font-size: 0.68rem; color: var(--red); }
-.desk-nav a[aria-current="page"] { background: var(--cream); }
+.header-cta {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  min-height: 44px;
+  padding: 0 16px;
+  font-size: 0.92rem;
+  border-radius: 999px;
+  box-shadow: 0 3px 0 var(--red-deep);
+}
+.desk-nav a small { display: none; }
+.desk-nav a[aria-current="page"] { background: var(--yellow); color: var(--ink); }
 .burger { display: none; width: 48px; height: 48px; border: 2px solid var(--ink); border-radius: 10px; background: #fff; cursor: pointer; }
 .burger span, .burger span::before, .burger span::after {
   display: block; width: 18px; height: 2px; background: var(--ink); position: relative; margin: 0 auto;
@@ -162,6 +186,7 @@ p { margin: 0.4rem 0 0; }
 .hero-grid > * { min-width: 0; }
 .lead { font-size: 1.15rem; max-width: 38ch; }
 .busca, .offer-search, .loja-tools { display: flex; gap: 8px; margin-top: 18px; align-items: center; }
+.busca .btn, .offer-search .btn { flex: 0 0 auto; min-width: 112px; }
 .busca input, .offer-search input, .loja-tools input, .card input, .card select, .card textarea, .dlg-field select, .news-fields input {
   width: 100%;
   min-height: 48px;
@@ -171,8 +196,37 @@ p { margin: 0.4rem 0 0; }
   padding: 0 14px;
 }
 .card textarea { min-height: 120px; padding: 12px 14px; resize: vertical; }
-.atalhos, .chips, .filtro-list, .momentos { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
-.atalhos a, .atalhos button, .chips button, .filtro-list button, .momentos button {
+.atalhos, .chips, .filtro-list, .momentos { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+.atalhos a, .atalhos button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 18px;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  font-weight: 800;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform .15s, box-shadow .15s;
+}
+.atalhos a:first-child, .atalhos a[href*="ofertao"] {
+  background: var(--red);
+  color: #fff;
+  box-shadow: 0 4px 0 var(--red-deep);
+}
+.atalhos a[href*="fecha"] {
+  background: var(--yellow);
+  color: var(--ink);
+  box-shadow: 0 4px 0 #c9920a;
+}
+.atalhos button {
+  background: #fff;
+  color: var(--ink);
+  border-color: var(--ink);
+}
+.atalhos a:hover, .atalhos button:hover { transform: translateY(-2px); }
+.chips button, .filtro-list button, .momentos button {
   min-height: 48px;
   padding: 0 14px;
   border-radius: var(--radius);
@@ -312,7 +366,30 @@ p { margin: 0.4rem 0 0; }
   font-size: 1.4rem;
   cursor: pointer;
 }
-.plus.in { background: var(--red); color: #fff; border-color: var(--red); }
+.qty {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  flex: none;
+  background: #fff;
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  padding: 2px;
+}
+.qty button {
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--yellow);
+  color: var(--ink);
+  font-family: var(--display);
+  font-size: 1.3rem;
+  cursor: pointer;
+  line-height: 1;
+}
+.qty button:disabled { opacity: .35; cursor: default; }
+.qty [data-count] { min-width: 1.6rem; text-align: center; font-weight: 800; }
 
 .trilhos { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-top: 16px; }
 .placa {
@@ -333,15 +410,26 @@ p { margin: 0.4rem 0 0; }
 
 .campanhas { display: grid; grid-template-columns: 1.2fr 1fr; gap: 12px; }
 .camp { border-radius: 18px; padding: 22px; min-height: 220px; display: flex; flex-direction: column; align-items: flex-start; }
+.camp .btn {
+  margin-top: auto;
+  min-height: 48px;
+  border-radius: 999px;
+  padding: 0 20px;
+  font-weight: 800;
+  box-shadow: 0 4px 0 rgba(35, 24, 21, 0.16);
+}
+.camp-red .btn-yellow { background: var(--yellow); color: var(--ink); }
+.camp-yellow .btn-red { background: var(--red); color: #fff; }
 .camp p { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.08em; }
 .camp-red { background: var(--red); color: var(--cream); }
 .camp-yellow { background: var(--yellow); }
 .camp-link {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   justify-content: center;
-  min-height: 72px;
-  padding: 14px 16px;
+  min-height: 120px;
+  padding: 16px 18px;
   border-radius: 12px;
   border: 2px solid var(--ink);
   background: #fff;
@@ -349,7 +437,25 @@ p { margin: 0.4rem 0 0; }
   text-decoration: none;
   cursor: pointer;
   font: inherit;
+  color: var(--ink);
 }
+.camp-sazonal { border-left: 8px solid var(--yellow); }
+.camp-especial { border-left: 8px solid var(--red); }
+.camp-link em {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 10px;
+  min-height: 36px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--cream);
+  font-family: var(--sans);
+  font-style: normal;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+.camp-especial em { background: var(--red); color: #fff; }
 .lista-home, .felita-teaser-grid, .job-layout, .contact-layout, .lojas-layout, .ofertas-layout, .jornal-grid {
   display: grid;
   gap: 22px;
@@ -576,6 +682,7 @@ footer a, footer button { display: block; color: var(--cream); background: none;
   padding-bottom: env(safe-area-inset-bottom);
 }
 .tabbar a {
+  position: relative;
   flex: 1;
   min-height: 58px;
   display: flex;

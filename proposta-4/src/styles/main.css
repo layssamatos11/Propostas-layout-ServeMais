@@ -50,6 +50,8 @@ p { margin: 0 0 12px; }
 .btn-red { background: var(--red); color: var(--white); }
 .btn-red:hover { background: var(--red-deep); }
 .btn-yellow { background: var(--yellow); color: var(--ink); }
+.btn-ink { background: var(--ink); color: var(--yellow); border-color: var(--ink); box-shadow: 0 5px 0 rgba(0, 0, 0, .18); }
+.btn-ink:hover { background: #111; color: var(--yellow); }
 .btn-ghost { background: var(--white); color: var(--red); border-color: var(--red); }
 .btn-light { background: transparent; color: var(--white); border-color: var(--white); }
 .acoes { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
@@ -120,13 +122,45 @@ section, .split, .news-form { scroll-margin-top: 96px; padding: 28px 0; }
 .preco-de { margin: 0; color: var(--muted); text-decoration: line-through; font-size: 14px; }
 .preco { margin: 0; font-family: Poppins, sans-serif; font-weight: 800; font-size: 22px; }
 .mais, .hot, .zoom button { width: 48px; height: 48px; border: 0; border-radius: 50%; background: var(--yellow); color: var(--ink); font-size: 28px; font-weight: 700; cursor: pointer; line-height: 1; }
+.qty { display: inline-flex; align-items: center; gap: 2px; border: 2px solid var(--ink); border-radius: 999px; padding: 2px; background: #fff; flex: none; }
+.qty button { width: 36px; height: 36px; border: 0; border-radius: 50%; background: var(--yellow); color: var(--ink); font-weight: 800; font-size: 1.2rem; cursor: pointer; line-height: 1; }
+.qty button:disabled { opacity: .35; cursor: default; }
+.qty [data-count] { min-width: 1.4rem; text-align: center; font-weight: 800; }
 
-.campanha, .acao-especial { border: 0; border-radius: 28px; min-height: 210px; padding: 24px; text-align: left; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; cursor: pointer; font: inherit; }
+.campanha, .acao-especial { border: 0; border-radius: 28px; min-height: 210px; padding: 24px; text-align: left; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; cursor: pointer; font: inherit; transition: transform .2s, box-shadow .2s; }
+.campanha:hover, .acao-especial:hover { transform: translateY(-3px); box-shadow: 0 16px 32px rgba(31, 26, 23, .1); }
 .campanha-red { background: var(--red); color: var(--white); }
 .campanha-yellow { background: var(--yellow); color: var(--ink); }
-.acao-especial { background: var(--white); color: var(--ink); }
+.acao-especial {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #fff0f4 0%, #fff 55%);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  padding-top: 32px;
+}
+.acao-especial::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 10px;
+  background: linear-gradient(90deg, #2f6bff, #e10613, #22c55e, #3ec6ff, #ffc400, #c6a15b);
+}
 .campanha strong, .acao-especial strong { font-family: Poppins, sans-serif; font-size: 28px; line-height: 1.15; }
-.campanha em, .acao-especial em { margin-top: auto; font-style: normal; font-weight: 800; }
+.campanha em, .acao-especial em {
+  margin-top: auto;
+  font-style: normal;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 16px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+}
+.campanha-yellow em { background: var(--red); color: #fff; }
+.acao-especial em { background: var(--red); }
 .sazonais { display: flex; flex-wrap: wrap; gap: 8px; }
 .setor { display: grid; justify-items: center; gap: 8px; text-align: center; color: var(--ink); text-decoration: none; font-weight: 700; }
 .setor span { width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; font-family: Poppins, sans-serif; font-size: 28px; }
@@ -181,8 +215,9 @@ section, .split, .news-form { scroll-margin-top: 96px; padding: 28px 0; }
 .flip[aria-pressed="true"] .flip-in { transform: rotateY(180deg); }
 .quiz-sec, .porque, .fecha-banner, .news-form, .lado { border-radius: 28px; padding: 24px; }
 .quiz-sec, .porque, .lado, .news-form { background: var(--white); }
-.fecha-banner { background: var(--red); color: var(--white); margin-top: 28px; }
-.fecha-banner .olho { color: var(--yellow); }
+.fecha-banner { background: var(--yellow); color: var(--ink); margin-top: 28px; }
+.fecha-banner .olho { color: var(--red); font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+.fecha-banner .btn { margin-top: 16px; min-height: 52px; }
 .opcoes, .sugestoes { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .opcoes button { border-radius: 18px; min-height: 72px; }
 .sugestoes { list-style: none; padding: 0; }

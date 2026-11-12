@@ -4,7 +4,7 @@ import { NOTICIAS } from '../data/noticias.js'
 import { OFERTAS } from '../data/ofertas.js'
 import { LOJAS } from '../data/lojas.js'
 import { CAMPANHAS, SETORES, TICKER } from '../data/site.js'
-import { formatPhone, mapsLink, storeStatus } from '../domain/hours.js'
+import { storeStatus } from '../domain/hours.js'
 import { discount, esc, money, slug } from '../lib/format.js'
 import { nearestStore, state } from '../state/store.js'
 import { adjustPrice } from '../domain/price.js'
@@ -33,7 +33,7 @@ function storeRow(loja) {
       <p>${esc(loja.end)} · ${esc(loja.bairro)} · ${esc(loja.cidade)}</p>
       <p class="${status.on ? 'aberto' : 'fechado'}">${esc(status.txt)}</p>
     </div>
-    <a class="btn btn-line" href="${mapsLink(loja)}" target="_blank" rel="noopener">Como chegar</a>
+    <button class="btn btn-line" type="button" data-act="rota" data-id="${loja.id}">Como chegar</button>
   </article>`
 }
 
@@ -100,13 +100,16 @@ export function renderInicio() {
       </button>
     </div>
     <div class="camp-row">
-      <button class="camp-link" type="button" data-act="campanha" data-campanha="sazonais">
+      <button class="camp-link camp-sazonal" type="button" data-act="campanha" data-campanha="sazonais">
         <span>Campanhas sazonais</span>
         <strong>Páscoa, Natal, Festa Junina (exemplos)</strong>
+        <b>Conferir</b>
       </button>
-      <button class="camp-link" type="button" data-act="acoes">
+      <button class="camp-link camp-especial" type="button" data-act="acoes">
+        <span class="faixa-mini" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
         <span>Ações especiais</span>
         <strong>Dias de desconto e parcerias da rede</strong>
+        <b>Conferir</b>
       </button>
     </div>
   </section>

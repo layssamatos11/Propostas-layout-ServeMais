@@ -12,6 +12,7 @@ import { readJobForm, validateJob } from '../pages/trabalhe.js'
 import { validateContato } from '../pages/contato.js'
 import { forceRender } from './router.js'
 import { MOMENTOS } from '../data/felita.js'
+import { dialOrCopy, openDirections } from '../domain/hours.js'
 import { qtyOf, removeItem, setPreferredStore, setQty, state, storeFromCoords } from '../state/store.js'
 
 function go(hash) {
@@ -69,7 +70,24 @@ const actions = {
     openDialog('Regulamento · Fecha Mês', '<p>Regulamento ilustrativo. As regras, o período e as lojas participantes serão informados pela Rede Serve Mais. Nada aqui é uma oferta válida.</p>')
   },
   ligar(el) {
-    toast(`Telefone demonstrativo: ${el.dataset.tel}`)
+    const label = el.dataset.label || el.dataset.tel
+    dialOrCopy(el.dataset.digits || el.dataset.tel, label).then((mode) => {
+      if (mode === 'copy') toast(`Número copiado: ${label}`)
+      else if (mode === 'fail') toast(`Número: ${label}`)
+    })
+  },
+  rota(el) {
+    const loja = lojaById(el.dataset.id)
+    if (!loja) return
+    openDirections(loja).then((mode) => {
+      if (mode === 'ok') toast('Rota a partir da sua localização.')
+      else toast('Não lemos a localização. A rota abre até a unidade.')
+    })
+  },
+  qtd(el) {
+    const id = el.dataset.id
+    setQty(id, qtyOf(id) + Number(el.dataset.d))
+    paintCommerce()
   },
   geo() {
     if (!navigator.geolocation) {

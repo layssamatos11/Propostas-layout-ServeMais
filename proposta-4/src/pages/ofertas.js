@@ -3,7 +3,7 @@ import { LOJAS, lojaById } from '../data/lojas.js'
 import { sortedOffers } from '../domain/query.js'
 import { esc, slug } from '../lib/format.js'
 import { state } from '../state/store.js'
-import { productCard } from '../components/product-card.js'
+import { paintQty, productCard } from '../components/product-card.js'
 
 function chips() {
   return FILTROS.map((item) => {
@@ -34,6 +34,7 @@ export function mountOfertas() {
   document.querySelectorAll('[data-act="cat"]').forEach((button) => {
     button.setAttribute('aria-pressed', button.dataset.cat === state.filtro ? 'true' : 'false')
   })
+  paintQty()
 }
 
 export function renderOfertas() {
@@ -69,7 +70,7 @@ export function renderOfertas() {
       <p class="olho">Fecha Mês</p>
       <h2>Campanha em destaque</h2>
       <p>Banner de campanha com período de validade, regras resumidas e botão de ação (exemplo).</p>
-      <button class="btn btn-yellow" type="button" data-act="campanha" data-campanha="fecha">Ver regulamento</button>
+      <button class="btn btn-ink" type="button" data-act="campanha" data-campanha="fecha">Ver regulamento</button>
     </section>`
 }
 

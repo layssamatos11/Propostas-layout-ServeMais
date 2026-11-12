@@ -1,5 +1,5 @@
 import { esc } from '../lib/format.js'
-import { formatPhone, horario, mapsLink, storeStatus } from '../domain/hours.js'
+import { formatPhone, horario, storeStatus } from '../domain/hours.js'
 
 export function storeCard(loja, on) {
   const status = storeStatus(loja)
@@ -11,8 +11,8 @@ export function storeCard(loja, on) {
       <p>${esc(horario(loja))}</p>
       <p class="${status.on ? 'aberto' : 'fechado'}">${esc(status.txt)}</p>
       <p class="loja-acoes">
-        <a class="btn btn-red" href="${mapsLink(loja)}" target="_blank" rel="noopener">Como chegar</a>
-        <a class="btn btn-ghost" href="tel:+55${loja.tel}">Ligar ${esc(formatPhone(loja.tel))}</a>
+        <button class="btn btn-red" type="button" data-act="rota" data-id="${loja.id}">Como chegar</button>
+        <button class="btn btn-ghost" type="button" data-act="ligar" data-digits="${loja.tel}" data-label="${formatPhone(loja.tel)}">Ligar ${esc(formatPhone(loja.tel))}</button>
       </p>
     </div>
   </article>`
@@ -25,6 +25,6 @@ export function storeRow(loja) {
       <h3>${esc(loja.nome)} (exemplo)</h3>
       <p>${esc(loja.end)} · ${esc(loja.bairro)} · ${esc(horario(loja))}</p>
     </div>
-    <a class="btn btn-ghost" href="${mapsLink(loja)}" target="_blank" rel="noopener">Como chegar</a>
+    <button class="btn btn-ghost" type="button" data-act="rota" data-id="${loja.id}">Como chegar</button>
   </article>`
 }
