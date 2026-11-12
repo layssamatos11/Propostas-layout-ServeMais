@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#BD1D1D">
+<title>Rede Serve Mais — Cuiabá e Várzea Grande</title>
+<meta name="description" content="Proposta 1 do site da Rede Serve Mais: ofertas da semana e 17 lojas em Cuiabá e Várzea Grande. Conteúdo demonstrativo.">
+<link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#BD1D1D; --red-deep:#8F1212; --yellow:#FBB90E; --yellow-soft:#FFF1C7;
+  --ink:#1F1A17; --muted:#5C534C; --line:#E7DFD6; --bg:#FAF7F3; --white:#fff;
+  --green:#1E8E4E; --shadow:0 10px 30px rgba(31,26,23,.08);
+  --header:74px;
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:calc(var(--header) + 12px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 Inter,system-ui,sans-serif}
+img{max-width:100%;display:block}
+h1,h2,h3,h4{font-family:Poppins,Inter,sans-serif;line-height:1.08;letter-spacing:-.02em;margin:0}
+h1{font-size:clamp(2.3rem,5vw,3.6rem);font-weight:800}
+h2{font-size:clamp(1.6rem,3vw,2.15rem);font-weight:700}
+h3{font-size:1.05rem;font-weight:700}
+p{margin:0}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+::selection{background:var(--yellow);color:var(--ink)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+[hidden]{display:none !important}
+.skip{position:absolute;left:-999px;top:8px;background:var(--yellow);color:var(--ink);padding:10px 14px;border-radius:10px;z-index:80}
+.skip:focus{left:8px}
+.demo{display:flex;gap:12px;align-items:center;justify-content:center;background:var(--yellow);color:var(--ink);text-align:center;font-size:.88rem;font-weight:600;padding:8px 16px}
+.demo button{border:0;background:transparent;font-size:1.3rem;cursor:pointer;line-height:1;min-width:44px;min-height:44px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:30;background:#fff;border-bottom:1px solid transparent;transition:border-color .2s,box-shadow .2s}
+header.scrolled{border-bottom-color:var(--line);box-shadow:0 8px 24px rgba(31,26,23,.05)}
+.bar{max-width:1160px;margin:0 auto;min-height:var(--header);display:flex;align-items:center;gap:18px;padding:8px 20px}
+.logo img{height:52px;width:auto}
+.desk-nav{display:flex;gap:4px;margin-left:auto}
+.desk-nav a{text-decoration:none;font-weight:600;font-size:.95rem;padding:10px 12px;border-radius:10px;position:relative}
+.desk-nav a:hover{background:var(--yellow-soft)}
+.desk-nav a[aria-current="page"]::after{content:"";position:absolute;left:12px;right:12px;bottom:4px;height:3px;border-radius:3px;background:var(--yellow)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 20px;border-radius:999px;border:2px solid transparent;font-weight:700;text-decoration:none;cursor:pointer;transition:transform .2s,background .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn-y{background:var(--yellow);color:var(--ink)}
+.btn-y:hover{background:#ffc93a}
+.btn-r{background:var(--red);color:#fff}
+.btn-r:hover{background:var(--red-deep)}
+.btn-w{background:#fff;color:var(--red)}
+.btn-line{background:#fff;color:var(--red);border-color:var(--red)}
+.btn-line:hover{background:#fff6f6}
+.header-lista{margin-left:0;min-height:44px;padding:0 14px}
+.header-lista .count{background:var(--yellow);color:var(--ink);min-width:22px;height:22px;border-radius:999px;display:grid;place-items:center;font-size:.8rem}
+.btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.7)}
+.burger{display:none;margin-left:auto;width:48px;height:48px;border-radius:14px;border:1px solid var(--line);background:#fff;cursor:pointer}
+.burger span,.burger span::before,.burger span::after{display:block;width:18px;height:2px;background:var(--ink);border-radius:2px;position:relative}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+.hero{background:var(--red);color:#fff;position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:36px;align-items:center;padding:48px 0 56px}
+.kicker{display:inline-block;background:rgba(255,255,255,.16);border-radius:999px;padding:6px 12px;font-size:.75rem;font-weight:800;letter-spacing:.06em}
+.hero h1{margin:14px 0 12px}
+.hero .lead{color:#FFE9E9;font-size:1.08rem;max-width:46ch}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.stats{display:flex;gap:8px;margin-top:28px}
+.stats div{padding:0 22px 0 0;margin-right:8px;border-right:1px solid rgba(255,255,255,.28)}
+.stats div:last-child{border:0}
+.stats b{display:block;font-family:Poppins,sans-serif;font-size:1.9rem;font-weight:800}
+.stats span{font-size:.85rem;color:#FFE1E1}
+.hero-visual{position:relative;min-height:360px}
+.orb{position:absolute;border-radius:50%;pointer-events:none}
+.orb-y{width:240px;height:240px;background:var(--yellow);right:-20px;top:-30px}
+.orb-r{width:120px;height:120px;background:#d23a2a;left:-16px;bottom:36px}
+.shot{position:relative;z-index:1;min-height:300px;border-radius:28px;display:flex;align-items:flex-start;padding:20px;color:var(--muted);background:
+  repeating-linear-gradient(135deg,rgba(189,29,29,.06) 0 10px,transparent 10px 20px),
+  linear-gradient(160deg,#fff 0%,#F8E7D2 100%);
+  border:1px solid rgba(255,255,255,.4);box-shadow:var(--shadow)}
+.shot span{background:rgba(255,255,255,.86);border-radius:12px;padding:8px 10px;font-size:.82rem}
+.deal{position:absolute;z-index:2;left:18px;bottom:18px;background:#fff;color:var(--ink);border-radius:18px;padding:14px 16px;box-shadow:0 12px 30px rgba(0,0,0,.16);min-width:180px}
+.deal small{display:block;font-size:.72rem;font-weight:800;letter-spacing:.05em;color:var(--red)}
+.deal strong{display:block;font-family:Poppins,sans-serif;font-size:1.7rem;font-weight:800;letter-spacing:-.03em}
+.deal em{font-style:normal;font-size:.75rem;color:var(--muted)}
+.sec{padding:56px 0}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:18px;flex-wrap:wrap}
+.accent{width:46px;height:4px;border-radius:4px;background:var(--yellow);margin:10px 0}
+.sub{color:var(--muted);margin-top:4px}
+.toolbar{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin:8px 0 18px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:44px;padding:0 16px;border-radius:999px;border:0;background:#fff;box-shadow:inset 0 0 0 1px var(--line);font-weight:600;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--red);color:#fff;box-shadow:none}
+.search,.field input,.field select,.field textarea{width:100%;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;min-height:48px}
+.search{max-width:320px}
+.field textarea{min-height:140px;resize:vertical}
+.search:focus,.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--yellow);box-shadow:0 0 0 4px rgba(251,185,14,.45)}
+.field input[aria-invalid="true"],.field select[aria-invalid="true"],.field textarea[aria-invalid="true"]{border-color:var(--red)}
+.err{color:var(--red);font-size:.82rem;min-height:1.1em;margin-top:4px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.pcard{position:relative;background:#fff;border-radius:22px;padding:12px 12px 14px;border:1px solid rgba(31,26,23,.04);box-shadow:0 8px 24px rgba(31,26,23,.05);display:flex;flex-direction:column;gap:4px;transition:transform .2s,box-shadow .2s}
+.pcard:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(31,26,23,.1)}
+.ph{position:relative;aspect-ratio:1.2/1;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;overflow:hidden;background-image:repeating-linear-gradient(135deg,transparent,transparent 10px,rgba(255,255,255,.45) 10px,rgba(255,255,255,.45) 20px)}
+.ph svg{width:48px;height:48px}
+.ph .cap{font-size:.72rem;color:var(--muted);padding:0 8px}
+.badge{position:absolute;top:10px;left:10px;z-index:1;font-size:.7rem;font-weight:800;letter-spacing:.04em;padding:4px 8px;border-radius:999px;color:#fff}
+.b-red{background:var(--red)} .b-green{background:var(--green)} .b-yellow{background:var(--yellow);color:var(--ink)}
+.unit{color:var(--muted);font-size:.85rem}
+.price-row{display:flex;align-items:flex-end;justify-content:space-between;gap:8px;margin-top:6px}
+.old{color:var(--muted);text-decoration:line-through;font-size:.82rem}
+.now{font-family:Poppins,sans-serif;font-weight:800;font-size:1.4rem;color:var(--red);letter-spacing:-.03em;line-height:1}
+.add{width:44px;height:44px;border:0;border-radius:50%;background:var(--yellow);color:var(--ink);font-size:1.45rem;font-weight:700;cursor:pointer;flex:none;line-height:1}
+.add.in{background:var(--ink);color:var(--yellow);font-size:.95rem}
+.valid{color:var(--muted);font-size:.75rem}
+.camp-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:16px}
+.camp{position:relative;overflow:hidden;border-radius:28px;min-height:230px;padding:32px;display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.camp-red{background:var(--red);color:#fff}
+.camp-yellow{background:var(--yellow);color:var(--ink)}
+.camp .tag{font-size:.75rem;font-weight:800;letter-spacing:.06em}
+.camp h3{font-size:clamp(1.6rem,3vw,2.2rem);max-width:16ch}
+.camp .orb{width:180px;height:180px;right:-40px;bottom:-60px}
+.camp-red .orb{background:var(--yellow)}
+.camp-yellow .orb{background:var(--red)}
+.mini-camps{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+.mini{background:#fff;border-radius:18px;padding:20px 22px;border:1px solid var(--line);text-decoration:none;display:block;transition:transform .2s}
+.mini:hover{transform:translateY(-3px)}
+.mini b{display:block;font-family:Poppins,sans-serif;margin-bottom:4px}
+.mini span{color:var(--muted);font-size:.92rem}
+.sectors{display:grid;grid-template-columns:repeat(7,1fr);gap:12px}
+.sector{text-decoration:none;text-align:center;background:transparent;border:0;cursor:pointer;font-weight:600;padding:0}
+.sector i{width:92px;height:92px;border-radius:50%;display:grid;place-items:center;margin:0 auto 8px;transition:transform .2s}
+.sector:hover i{transform:translateY(-4px)}
+.sector svg{width:36px;height:36px}
+.note{color:var(--muted);font-size:.9rem;margin-top:14px}
+.lojas-layout{display:grid;grid-template-columns:minmax(300px,420px) 1fr;gap:20px;align-items:start}
+.finder{display:grid;grid-template-columns:minmax(300px,420px) 1fr;grid-template-areas:"tools map" "list map";gap:12px 20px;align-items:start}
+.loja-tools{grid-area:tools}
+.finder .map-panel{grid-area:map}
+.finder #lojaList{grid-area:list}
+.map-panel{position:sticky;top:calc(var(--header) + 16px)}
+.map{position:relative;height:min(72vh,680px);min-height:420px;border-radius:28px;overflow:hidden;background:#F3EBE3;border:1px solid var(--line)}
+.map.compact{height:360px;min-height:280px}
+.map-canvas{position:absolute;inset:0;transform-origin:center center;transition:transform .25s ease;background-color:#F3EBE3;background-image:linear-gradient(#E6D9CC 1.5px,transparent 1.5px),linear-gradient(90deg,#E6D9CC 1.5px,transparent 1.5px);background-size:64px 64px}
+.region{position:absolute;font-size:.75rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:rgba(31,26,23,.38)}
+.region.cba{left:16%;top:14%}.region.vg{right:10%;top:18%}
+.river{position:absolute;left:54%;top:-5%;width:18px;height:120%;border-radius:20px;background:linear-gradient(#F6E2B8,#F3D48A);transform:rotate(8deg);opacity:.8}
+.pin{position:absolute;width:16px;height:16px;border-radius:50%;background:var(--red);border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.22);transform:translate(-50%,-50%);padding:0;cursor:pointer}
+.pin.on{width:26px;height:26px;background:var(--yellow);border-color:var(--red);z-index:3}
+.pin.dim{opacity:.25}
+.map-pop{position:absolute;z-index:4;width:220px;background:#fff;border-radius:16px;padding:12px 14px;box-shadow:0 12px 30px rgba(31,26,23,.16);transform:translate(16px,-80%)}
+.map-pop.flip{transform:translate(calc(-100% - 16px),-80%)}
+.map-pop b{display:block;margin-bottom:2px}
+.map-pop p{color:var(--muted);font-size:.82rem;margin-bottom:8px}
+.zoom{position:absolute;right:12px;top:12px;z-index:5;display:flex;flex-direction:column;gap:6px}
+.zoom button{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:#fff;font-size:1.2rem;cursor:pointer}
+.map-note{position:absolute;left:12px;bottom:12px;z-index:5;background:rgba(255,255,255,.9);border-radius:10px;padding:6px 8px;font-size:.72rem;color:var(--muted);max-width:240px}
+.loja{background:#fff;border-radius:18px;padding:14px 16px;border:1px solid var(--line);margin-bottom:10px}
+.loja.is-on{box-shadow:0 0 0 2px var(--red)}
+.loja-top{display:flex;gap:10px;align-items:flex-start}
+.num{width:28px;height:28px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;font-size:.8rem;font-weight:800;flex:none}
+.pill{display:inline-block;border-radius:999px;padding:2px 8px;font-size:.75rem;font-weight:700}
+.pill.on{background:#E5F6EA;color:var(--green)}
+.pill.off{background:#F3EEE8;color:var(--muted)}
+.pill.you{background:var(--yellow-soft);color:#6a5200}
+.loja-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.loja-actions .btn{min-height:40px;padding:0 14px;font-size:.9rem}
+.page-hero{position:relative;z-index:0;padding-top:36px}
+.blob{position:absolute;right:-80px;top:-80px;width:260px;height:260px;background:var(--yellow);border-radius:50%;z-index:-1;pointer-events:none}
+.banner{margin-top:28px;background:var(--yellow);border-radius:28px;padding:28px;position:relative;overflow:hidden;display:flex;justify-content:space-between;gap:18px;align-items:center}
+.banner .orb{width:200px;height:200px;background:#F6A90A;right:-30px;top:-70px}
+.banner .txt{position:relative;z-index:1}
+.center{display:flex;justify-content:center;margin-top:22px}
+.intro{display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:center}
+.kicker-dark{color:var(--red);font-weight:800;letter-spacing:.08em;font-size:.78rem}
+.time{list-style:none;padding:28px 0 0;margin:0;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;position:relative}
+.time::before{content:"";position:absolute;left:0;right:0;top:39px;height:3px;background:linear-gradient(90deg,var(--yellow),var(--red));border-radius:3px}
+.time li{position:relative;padding-top:8px}
+.dot{width:16px;height:16px;border-radius:50%;background:var(--red);border:3px solid var(--yellow);display:block;margin-bottom:14px}
+.values{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.vcard{background:#fff;border-radius:18px;padding:18px;border:1px solid var(--line);min-height:160px}
+.vcard i{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;margin-bottom:10px;color:#fff;font-style:normal;font-weight:800}
+.stats-bar{margin-top:28px;background:var(--red);color:#fff;border-radius:28px;display:grid;grid-template-columns:repeat(4,1fr);overflow:hidden}
+.stats-bar div{padding:26px 18px;text-align:center}
+.stats-bar b{display:block;font-family:Poppins,sans-serif;font-size:clamp(1.4rem,3vw,2.3rem)}
+.stats-bar span{color:#FFE1E1;font-size:.9rem}
+.contact{display:grid;grid-template-columns:1.35fr .75fr;gap:18px;align-items:start}
+.card{background:#fff;border-radius:28px;padding:22px;border:1px solid var(--line)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field{display:flex;flex-direction:column;margin-bottom:4px}
+.field.full{grid-column:1/-1}
+.field label{font-weight:600;margin-bottom:6px}
+.channels{display:flex;flex-direction:column;gap:12px}
+.channel{border:0;border-radius:18px;padding:16px;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px;min-height:84px}
+.channel b{display:block;font-family:Poppins,sans-serif}
+.channel span{font-size:.88rem}
+.channel i{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-style:normal;flex:none}
+.ch-r{background:var(--red);color:#fff}.ch-r i{background:var(--yellow);color:var(--ink)}
+.ch-y{background:var(--yellow);color:var(--ink)}.ch-y i{background:var(--red);color:#fff}
+.ch-w{background:#fff;border:1px solid var(--line)}.ch-w i{background:var(--red);color:#fff}
+.success{background:#E5F6EA;border-radius:16px;padding:14px}
+footer{background:var(--red-deep);color:#F8E4E4;margin-top:20px}
+footer .wrap{padding:36px 20px 28px;display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:22px}
+footer h3{color:#fff;font-size:1rem;margin-bottom:8px}
+footer a{display:block;text-decoration:none;padding:4px 0}
+footer a:hover{color:#fff}
+.foot-logo{background:#fff;border-radius:16px;padding:6px;display:inline-block}
+.foot-logo img{height:58px}
+.legal{border-top:1px solid rgba(255,255,255,.14);margin-top:8px;padding:14px 20px 22px;font-size:.8rem;color:#E7C8C8}
+.tabbar{display:none}
+.fab{position:fixed;right:18px;bottom:18px;z-index:35;display:flex;align-items:center;gap:8px;background:var(--ink);color:#fff;border:0;border-radius:999px;min-height:52px;padding:0 16px 0 18px;font-weight:700;cursor:pointer;box-shadow:0 10px 24px rgba(31,26,23,.28)}
+.fab .count{background:var(--yellow);color:var(--ink);min-width:26px;height:26px;border-radius:999px;display:grid;place-items:center;font-size:.85rem}
+.fab.pop{animation:pop .35s ease}
+@keyframes pop{50%{transform:scale(1.06)}}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(12px);background:var(--ink);color:#fff;padding:12px 16px;border-radius:999px;z-index:80;opacity:0;pointer-events:none;transition:.25s;max-width:min(92vw,440px);text-align:center}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.menu{position:fixed;inset:0;z-index:50;background:var(--bg);padding:18px 20px 32px;overflow:auto}
+.menu-top{display:flex;justify-content:space-between;align-items:center}
+.menu a{display:block;font-family:Poppins,sans-serif;font-weight:700;font-size:1.8rem;text-decoration:none;padding:8px 0}
+.menu .btn{align-self:flex-start;white-space:nowrap;margin-top:8px}
+.menu a[aria-current="page"]{color:var(--red)}
+.backdrop{position:fixed;inset:0;background:rgba(31,26,23,.45);z-index:54}
+.drawer{position:fixed;top:0;right:0;bottom:0;z-index:55;width:min(420px,100%);background:#fff;box-shadow:-16px 0 40px rgba(0,0,0,.14);display:flex;flex-direction:column}
+.drawer header,.drawer .dhead{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid var(--line)}
+.drawer .body{padding:12px 16px;overflow:auto;flex:1}
+.drawer .foot{padding:14px 16px 18px;border-top:1px solid var(--line)}
+.line{display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.line .nm{flex:1}
+.step{display:flex;align-items:center;gap:6px}
+.step button{width:36px;height:36px;border-radius:10px;border:1px solid var(--line);background:#fff;cursor:pointer}
+.x{width:44px;height:44px;border:0;background:transparent;font-size:1.6rem;cursor:pointer}
+.dialog{position:fixed;inset:0;z-index:60;background:rgba(31,26,23,.48);display:grid;place-items:center;padding:20px}
+.dialog-card{background:#fff;border-radius:24px;padding:24px;max-width:480px;width:100%;position:relative}
+.empty{background:#fff;border-radius:18px;padding:22px;color:var(--muted);border:1px dashed var(--line)}
+main.in{animation:rise .4s ease}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}}
+body.lock{overflow:hidden}
+@media (min-width:981px){.fab{display:none}}
+@media (max-width:980px){
+  .desk-nav,.header-cta,.header-lista{display:none}
+  .burger{display:grid;place-items:center}
+  .tabbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:34;background:#fff;border-top:1px solid var(--line);padding:4px 6px calc(6px + env(safe-area-inset-bottom));justify-content:space-around}
+  .tabbar a,.tabbar button{flex:1;background:none;border:0;color:var(--muted);font-size:.72rem;font-weight:700;display:flex;flex-direction:column;align-items:center;gap:2px;min-height:52px;text-decoration:none;cursor:pointer}
+  .tabbar [aria-current="page"]{color:var(--red)}
+  body{padding-bottom:calc(72px + env(safe-area-inset-bottom))}
+  .fab{bottom:calc(76px + env(safe-area-inset-bottom))}
+  .toast{bottom:calc(86px + env(safe-area-inset-bottom))}
+  footer .wrap,.intro,.contact,.camp-grid,.mini-camps,.lojas-layout,.finder,.values,.stats-bar,.time{grid-template-columns:1fr}
+  .finder{grid-template-areas:"tools" "map" "list"}
+  .map-panel{position:static}
+  .time::before{width:3px;height:auto;top:8px;bottom:0;left:6px;right:auto}
+  .time li{padding-left:28px}
+  .hero-grid{grid-template-columns:1fr;padding-top:32px}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .sectors{display:flex;overflow:auto;gap:14px;scroll-snap-type:x mandatory;padding-bottom:6px}
+  .sector{min-width:108px;scroll-snap-align:start}
+  .form-grid{grid-template-columns:1fr}
+  .field.full{grid-column:auto}
+}
+@media (max-width:420px){.grid{grid-template-columns:1fr}.stats{flex-wrap:wrap}.stats div{border:0}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  .pcard:hover,.btn:hover,.sector:hover i,.mini:hover{transform:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#conteudo">Ir para o conteúdo</a>
+<div class="demo" id="demo">
+  <p>Conteúdo demonstrativo: preços, endereços, horários e promoções são exemplos e serão trocados pelos dados oficiais da rede.</p>
+  <button type="button" data-act="dismiss-demo" aria-label="Fechar aviso">×</button>
+</div>
+<header id="topo">
+  <div class="bar">
+    <a class="logo" href="#inicio" aria-label="Rede Serve Mais, início"><img src="logo.png" alt="Rede Serve Mais"></a>
+    <nav class="desk-nav" aria-label="Principal" id="navDesktop"></nav>
+    <button class="btn btn-line header-lista" type="button" data-act="open-lista">Lista <span class="count" id="fabCountDesk">0</span></button>
+    <a class="btn btn-r header-cta" href="#lojas">Encontrar uma unidade</a>
+    <button class="burger" type="button" data-act="open-menu" aria-label="Abrir menu"><span></span></button>
+  </div>
+</header>
+<main id="conteudo" tabindex="-1"></main>
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="foot-logo"><img src="logo.png" alt=""></div>
+      <p style="margin-top:12px">Rede familiar de supermercados em Cuiabá e Várzea Grande, Mato Grosso.</p>
+    </div>
+    <div>
+      <h3>Navegação</h3>
+      <a href="#ofertas">Ofertas</a>
+      <a href="#lojas">Nossas lojas</a>
+      <a href="#setores">Setores</a>
+      <a href="#institucional">Institucional</a>
+      <a href="#contato">Contato</a>
+    </div>
+    <div>
+      <h3>Atendimento</h3>
+      <p>SAC: (65) 3000-0000 (exemplo)<br>sac@exemplo.com (exemplo)</p>
+    </div>
+    <div>
+      <h3>Siga a rede</h3>
+      <button class="btn btn-line" type="button" data-act="social" style="background:transparent;color:#fff;border-color:#fff">Instagram</button>
+    </div>
+  </div>
+  <p class="legal wrap">Proposta 1 · Rede Serve Mais. Conteúdo demonstrativo para conceito visual. Razão social, CNPJ e política de privacidade: a publicar.</p>
+</footer>
+<nav class="tabbar" aria-label="Atalhos" id="tabbar"></nav>
+<button class="fab" id="fab" type="button" data-act="open-lista">Minha lista <span class="count" id="fabCount">0</span></button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="menu" id="menu" hidden>
+  <div class="menu-top">
+    <img src="logo.png" alt="" height="52">
+    <button class="x" type="button" data-act="close-menu" aria-label="Fechar menu">×</button>
+  </div>
+  <nav id="navMobile" aria-label="Menu"></nav>
+  <a class="btn btn-r" href="#lojas" style="margin-top:12px">Encontrar uma unidade</a>
+</div>
+<div class="backdrop" id="listaBack" hidden data-act="close-lista"></div>
+<aside class="drawer" id="lista" hidden aria-label="Minha lista">
+  <div class="dhead"><h2 style="font-size:1.3rem">Minha lista</h2><button class="x" type="button" data-act="close-lista" aria-label="Fechar lista">×</button></div>
+  <div class="body" id="listaBody"></div>
+  <div class="foot" id="listaFoot"></div>
+</aside>
+<div class="dialog" id="dialog" hidden>
+  <div class="dialog-card" role="dialog" aria-modal="true" aria-labelledby="dlgTitle">
+    <button class="x" type="button" data-act="close-dialog" aria-label="Fechar" style="position:absolute;right:8px;top:8px">×</button>
+    <div id="dlgBody"></div>
+  </div>
+</div>
+
+<script>
+var PAGES=[["inicio","Início"],["ofertas","Ofertas"],["lojas","Nossas lojas"],["setores","Setores"],["institucional","Institucional"],["contato","Contato"]];
+var SETORES=[
+  {nome:"Hortifruti",cor:"#E5F4D8",tinta:"#2E7D32",desc:"Frutas, legumes e verduras para a mesa da família.",icon:"horti"},
+  {nome:"Açougue",cor:"#F8D6D2",tinta:"#BD1D1D",desc:"Cortes de carne e aves para o churrasco e a rotina.",icon:"carne"},
+  {nome:"Mercearia",cor:"#FFF1C7",tinta:"#8A6A00",desc:"Itens do dia a dia para abastecer a despensa.",icon:"cesta"},
+  {nome:"Frios e laticínios",cor:"#F8E4F1",tinta:"#9C3A78",desc:"Queijos, presuntos, leites e iogurtes.",icon:"frio"},
+  {nome:"Bebidas",cor:"#FDE7A8",tinta:"#8A5A00",desc:"Água, sucos, refrigerantes e muito mais.",icon:"copo"},
+  {nome:"Higiene e limpeza",cor:"#FDE6D4",tinta:"#C45C26",desc:"Cuidados pessoais e tudo para deixar a casa em ordem.",icon:"brilho"},
+  {nome:"Bazar",cor:"#F6DDE0",tinta:"#A33B4A",desc:"Utilidades domésticas e itens do cotidiano.",icon:"sacola"}
+];
+var FILTROS=["Todas","Ofertão da Semana","Fecha Mês","Sazonais","Hortifruti","Açougue","Mercearia","Frios e laticínios","Bebidas","Higiene e limpeza","Bazar"];
+var OFERTAS=[
+  {id:1,nome:"Banana prata",det:"Por kg (exemplo)",cat:"Hortifruti",camp:"Ofertão da Semana",tag:"OFERTA",preco:4.99,de:6.49},
+  {id:2,nome:"Tomate maduro",det:"Por kg (exemplo)",cat:"Hortifruti",camp:"Ofertão da Semana",tag:"PCT",preco:5.49,de:7.99},
+  {id:3,nome:"Alface crespa",det:"Unidade (exemplo)",cat:"Hortifruti",camp:"",tag:"OFERTA",preco:2.99,de:3.99},
+  {id:4,nome:"Patinho bovino",det:"Por kg (exemplo)",cat:"Açougue",camp:"Ofertão da Semana",tag:"OFERTA",preco:32.90,de:39.90},
+  {id:5,nome:"Frango inteiro",det:"Por kg (exemplo)",cat:"Açougue",camp:"Fecha Mês",tag:"LEVE 3",preco:9.99,de:12.90},
+  {id:6,nome:"Linguiça toscana",det:"Por kg (exemplo)",cat:"Açougue",camp:"",tag:"PCT",preco:18.90,de:22.90},
+  {id:7,nome:"Arroz tipo 1",det:"Pacote 5 kg (exemplo)",cat:"Mercearia",camp:"Ofertão da Semana",tag:"OFERTA",preco:22.90,de:28.90},
+  {id:8,nome:"Feijão carioca",det:"Pacote 1 kg (exemplo)",cat:"Mercearia",camp:"Fecha Mês",tag:"OFERTA",preco:7.49,de:9.99},
+  {id:9,nome:"Óleo de soja",det:"Garrafa 900 ml (exemplo)",cat:"Mercearia",camp:"Fecha Mês",tag:"PCT",preco:6.99,de:8.49},
+  {id:10,nome:"Leite integral",det:"Caixa 1 L (exemplo)",cat:"Frios e laticínios",camp:"Ofertão da Semana",tag:"LEVE 3",preco:4.79,de:5.99},
+  {id:11,nome:"Queijo mussarela",det:"Por kg (exemplo)",cat:"Frios e laticínios",camp:"",tag:"OFERTA",preco:39.90,de:49.90},
+  {id:12,nome:"Refrigerante cola",det:"Garrafa 2 L (exemplo)",cat:"Bebidas",camp:"Fecha Mês",tag:"PCT",preco:7.99,de:10.99},
+  {id:13,nome:"Suco de laranja",det:"Garrafa 1 L (exemplo)",cat:"Bebidas",camp:"Sazonais",tag:"NOVO",preco:8.49,de:9.99},
+  {id:14,nome:"Água mineral",det:"Garrafa 1,5 L (exemplo)",cat:"Bebidas",camp:"",tag:"OFERTA",preco:2.49,de:3.29},
+  {id:15,nome:"Detergente neutro",det:"Frasco 500 ml (exemplo)",cat:"Higiene e limpeza",camp:"Fecha Mês",tag:"LEVE 3",preco:1.99,de:2.79},
+  {id:16,nome:"Copo americano",det:"Jogo com 6 (exemplo)",cat:"Bazar",camp:"Sazonais",tag:"NOVO",preco:12.90,de:16.90}
+];
+var LOJAS=[
+  {id:1,nome:"Unidade 01",cidade:"Cuiabá",bairro:"Centro",end:"Rua exemplo, 100",abre:7,fecha:22,tel:"6530000101",x:34,y:46},
+  {id:2,nome:"Unidade 02",cidade:"Cuiabá",bairro:"Santa Rosa",end:"Avenida exemplo, 250",abre:7,fecha:22,tel:"6530000102",x:24,y:30},
+  {id:3,nome:"Unidade 03",cidade:"Cuiabá",bairro:"CPA",end:"Avenida exemplo, 1400",abre:8,fecha:23,tel:"6530000103",x:18,y:58},
+  {id:4,nome:"Unidade 04",cidade:"Cuiabá",bairro:"Morada da Serra",end:"Rua exemplo, 80",abre:7,fecha:21,tel:"6530000104",x:42,y:24},
+  {id:5,nome:"Unidade 05",cidade:"Cuiabá",bairro:"Jardim Imperial",end:"Rua exemplo, 320",abre:6,fecha:22,tel:"6530000105",x:16,y:40},
+  {id:6,nome:"Unidade 06",cidade:"Cuiabá",bairro:"Pedra 90",end:"Avenida exemplo, 900",abre:8,fecha:22,tel:"6530000106",x:30,y:70},
+  {id:7,nome:"Unidade 07",cidade:"Cuiabá",bairro:"Jardim das Américas",end:"Rua exemplo, 55",abre:7,fecha:22,tel:"6530000107",x:46,y:62},
+  {id:8,nome:"Unidade 08",cidade:"Cuiabá",bairro:"Goiabeiras",end:"Avenida exemplo, 2100",abre:8,fecha:24,tel:"6530000108",x:38,y:80},
+  {id:9,nome:"Unidade 09",cidade:"Cuiabá",bairro:"Porto",end:"Rua exemplo, 12",abre:7,fecha:21,tel:"6530000109",x:50,y:38},
+  {id:10,nome:"Unidade 10",cidade:"Cuiabá",bairro:"Bosque da Saúde",end:"Rua exemplo, 640",abre:8,fecha:22,tel:"6530000110",x:22,y:18},
+  {id:11,nome:"Unidade 11",cidade:"Cuiabá",bairro:"Despraiado",end:"Avenida exemplo, 300",abre:7,fecha:22,tel:"6530000111",x:12,y:72},
+  {id:12,nome:"Unidade 12",cidade:"Várzea Grande",bairro:"Centro",end:"Avenida exemplo, 150",abre:7,fecha:22,tel:"6530000112",x:70,y:48},
+  {id:13,nome:"Unidade 13",cidade:"Várzea Grande",bairro:"Cristo Rei",end:"Rua exemplo, 430",abre:8,fecha:22,tel:"6530000113",x:78,y:34},
+  {id:14,nome:"Unidade 14",cidade:"Várzea Grande",bairro:"Mapim",end:"Rua exemplo, 88",abre:7,fecha:21,tel:"6530000114",x:74,y:64},
+  {id:15,nome:"Unidade 15",cidade:"Várzea Grande",bairro:"Jardim Glória",end:"Avenida exemplo, 770",abre:8,fecha:23,tel:"6530000115",x:86,y:50},
+  {id:16,nome:"Unidade 16",cidade:"Várzea Grande",bairro:"Costa Verde",end:"Rua exemplo, 19",abre:8,fecha:24,tel:"6530000116",x:82,y:74},
+  {id:17,nome:"Unidade 17",cidade:"Várzea Grande",bairro:"Água Limpa",end:"Avenida exemplo, 510",abre:7,fecha:22,tel:"6530000117",x:66,y:26}
+];
+
+function load(key, fallback){try{var v=JSON.parse(localStorage.getItem(key));return v==null?fallback:v}catch(e){return fallback}}
+var state={
+  filtro:"Todas", homeCat:"Todas", ordem:"desconto", limite:8, oq:"",
+  cidade:"Todas", aberto:false, q:"", pin:null, zoom:1,
+  loja:load("sm-unidade", null), lista:load("sm-lista", []), assunto:""
+};
+if(state.loja && !LOJAS.some(function(l){return l.id===state.loja})) state.loja=null;
+if(!Array.isArray(state.lista)) state.lista=[];
+
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function money(n){return n.toLocaleString("pt-BR",{style:"currency",currency:"BRL"})}
+function slug(s){return s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,"")}
+function hh(n){return String(n%24).padStart(2,"0")+"h"}
+function adj(value, lojaId){if(!lojaId) return value;var f=1+((Number(lojaId)%5)-2)*0.02;return Math.round(value*f*100)/100}
+function desc(p){return (p.de-p.preco)/p.de}
+function maxOff(){return Math.round(Math.max.apply(null, OFERTAS.map(desc))*100)}
+function lojaById(id){return LOJAS.filter(function(l){return l.id===Number(id)})[0]}
+function isOpen(l, now){now=now||new Date();var m=now.getHours()+now.getMinutes()/60;if(l.fecha>=24) return m>=l.abre;return m>=l.abre && m<l.fecha}
+function statusLoja(l){return isOpen(l)?{on:true,txt:"Aberto · fecha às "+hh(l.fecha)}:{on:false,txt:"Fechado · abre às "+hh(l.abre)}}
+function tel(t){return "("+t.slice(0,2)+") "+t.slice(2,6)+"-"+t.slice(6)}
+function mapsLink(l){return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(l.end+", "+l.bairro+", "+l.cidade+", Mato Grosso")}
+function badgeOf(p){if(p.tag==="PCT") return "-"+Math.round(desc(p)*100)+"%";return p.tag}
+function badgeClass(b){if(b==="LEVE 3") return "b-green";if(b==="NOVO") return "b-yellow";return "b-red"}
+function setorDe(nome){return SETORES.filter(function(s){return s.nome===nome})[0]||SETORES[2]}
+function icon(name, color){
+  var c=color||"currentColor";
+  var paths={
+    horti:'<path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 5.6-7 10-7 10z" fill="'+c+'"/>',
+    carne:'<path d="M5 14c2 4 6 6 10 5 3-1 4-4 3-6-2 1-4 0-5-2 2-1 2-4 0-5-4 0-8 3-8 8z" fill="'+c+'"/><circle cx="16" cy="8" r="1.2" fill="#fff"/>',
+    cesta:'<path d="M4 9h16l-1.4 9.2A2 2 0 0 1 16.6 20H7.4a2 2 0 0 1-2-1.8L4 9z" fill="none" stroke="'+c+'" stroke-width="1.8"/><path d="M8 9l1.5-4h5L16 9" fill="none" stroke="'+c+'" stroke-width="1.8"/>',
+    frio:'<path d="M12 3v18M5 7l14 10M19 7L5 17" stroke="'+c+'" stroke-width="1.8" fill="none" stroke-linecap="round"/>',
+    copo:'<path d="M7 3h10l-1 8a4 4 0 0 1-8 0L7 3z" fill="none" stroke="'+c+'" stroke-width="1.8"/><path d="M12 15v4M9 21h6" stroke="'+c+'" stroke-width="1.8" stroke-linecap="round"/>',
+    brilho:'<path d="M12 3l1.2 4.2L17 8.5l-3.8 1.3L12 14l-1.2-4.2L7 8.5l3.8-1.3L12 3zM18 14l.6 2 2 .6-2 .6-.6 2-.6-2-2-.6 2-.6.6-2z" fill="'+c+'"/>',
+    sacola:'<path d="M6 8h12l-1 12H7L6 8z" fill="none" stroke="'+c+'" stroke-width="1.8"/><path d="M9 8V7a3 3 0 0 1 6 0v1" fill="none" stroke="'+c+'" stroke-width="1.8"/>'
+  };
+  return '<svg viewBox="0 0 24 24" aria-hidden="true">'+(paths[name]||paths.cesta)+'</svg>';
+}
+function saveLista(){localStorage.setItem("sm-lista", JSON.stringify(state.lista))}
+function saveLoja(){localStorage.setItem("sm-unidade", JSON.stringify(state.loja))}
+function qtyOf(id){var it=state.lista.filter(function(i){return i.id===Number(id)})[0];return it?it.qtd:0}
+function setQty(id, qtd, bump){
+  id=Number(id);var i=state.lista.findIndex(function(x){return x.id===id});
+  if(qtd<=0){if(i>=0) state.lista.splice(i,1)}
+  else if(i>=0) state.lista[i].qtd=qtd;
+  else state.lista.push({id:id,qtd:qtd});
+  saveLista();paintQty();
+  if(!document.getElementById("lista").hidden) renderLista();
+  if(bump){var fab=document.getElementById("fab");fab.classList.remove("pop");void fab.offsetWidth;fab.classList.add("pop")}
+}
+function totalLista(){return state.lista.reduce(function(s,it){var p=OFERTAS.filter(function(o){return o.id===it.id})[0];return s+(p?adj(p.preco,state.loja)*it.qtd:0)},0)}
+function paintQty(){
+  document.querySelectorAll("[data-add]").forEach(function(btn){
+    var q=qtyOf(btn.dataset.add);btn.classList.toggle("in", q>0);btn.textContent=q>0?String(q):"+";
+    btn.setAttribute("aria-label", q>0?btn.dataset.name+": "+q+" na lista. Adicionar mais um":"Adicionar "+btn.dataset.name+" à lista");
+  });
+  var n=String(state.lista.reduce(function(s,i){return s+i.qtd},0));document.getElementById("fabCount").textContent=n;var d=document.getElementById("fabCountDesk");if(d) d.textContent=n;
+}
+var toastTimer;
+function toast(msg){var t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(function(){t.classList.remove("show")},2400)}
+
+function cardHTML(p){
+  var s=setorDe(p.cat);var b=badgeOf(p);
+  return '<article class="pcard"><div class="ph" style="background-color:'+s.cor+'"><span class="badge '+badgeClass(b)+'">'+esc(b)+'</span>'+icon(s.icon,s.tinta)+'<span class="cap">Foto do produto (exemplo)</span></div><h3>'+esc(p.nome)+'</h3><p class="unit">'+esc(p.det)+'</p><div class="price-row"><div><span class="old">'+money(adj(p.de,state.loja))+'</span><div class="now">'+money(adj(p.preco,state.loja))+'</div></div><button class="add" type="button" data-act="add" data-add="'+p.id+'" data-name="'+esc(p.nome)+'">+</button></div><p class="valid">Válido: período a definir</p></article>';
+}
+function matchFiltro(p,f){if(!f||f==="Todas")return true;return p.cat===f||p.camp===f}
+function filtradas(){
+  var q=state.oq.trim().toLowerCase();
+  return OFERTAS.filter(function(p){if(!matchFiltro(p,state.filtro))return false;if(!q)return true;return (p.nome+" "+p.cat+" "+p.det).toLowerCase().indexOf(q)>=0});
+}
+function sorted(list){
+  var arr=list.slice();
+  if(state.ordem==="menor") arr.sort(function(a,b){return adj(a.preco,state.loja)-adj(b.preco,state.loja)});
+  else if(state.ordem==="maior") arr.sort(function(a,b){return adj(b.preco,state.loja)-adj(a.preco,state.loja)});
+  else if(state.ordem==="nome") arr.sort(function(a,b){return a.nome.localeCompare(b.nome,"pt")});
+  else arr.sort(function(a,b){return desc(b)-desc(a)});
+  return arr;
+}
+function lojasFiltradas(){
+  var q=state.q.trim().toLowerCase();
+  return LOJAS.filter(function(l){
+    if(state.cidade!=="Todas"&&l.cidade!==state.cidade) return false;
+    if(state.aberto&&!isOpen(l)) return false;
+    if(!q) return true;
+    return (l.nome+" "+l.bairro+" "+l.cidade+" "+l.end).toLowerCase().indexOf(q)>=0;
+  });
+}
+function lojaCard(l){
+  var st=statusLoja(l);var you=state.loja===l.id;
+  return '<article class="loja'+(state.pin===l.id?' is-on':'')+'" id="loja-'+l.id+'" data-id="'+l.id+'"><div class="loja-top"><span class="num">'+l.id+'</span><div><h3>'+esc(l.nome)+' (exemplo)</h3><p>'+esc(l.end)+' · '+esc(l.bairro)+' · '+esc(l.cidade)+'</p><p>Horário: '+hh(l.abre)+' às '+hh(l.fecha)+' (exemplo)</p><p style="margin-top:6px"><span class="pill '+(st.on?'on':'off')+'">'+st.txt+'</span>'+(you?' <span class="pill you">Sua unidade</span>':'')+'</p></div></div><div class="loja-actions"><a class="btn btn-r" href="'+mapsLink(l)+'" target="_blank" rel="noopener">Como chegar</a><button class="btn btn-line" type="button" data-act="ligar" data-tel="'+tel(l.tel)+'">Ligar</button><button class="btn btn-y" type="button" data-act="usar-loja" data-id="'+l.id+'">'+(you?'Preços desta unidade':'Ver preços')+'</button></div></article>';
+}
+function pinsHTML(){
+  return LOJAS.map(function(l){return '<button class="pin" type="button" style="left:'+l.x+'%;top:'+l.y+'%" data-act="pin" data-id="'+l.id+'" aria-label="'+esc(l.nome)+', '+esc(l.bairro)+'"></button>'}).join("");
+}
+function mapHTML(compact){
+  return '<div class="map'+(compact?' compact':'')+'"><div class="map-canvas" id="mapCanvas"><span class="region cba">Cuiabá</span><span class="region vg">Várzea Grande</span><span class="river"></span>'+pinsHTML()+'<div class="map-pop" id="mapPop" hidden></div></div><div class="zoom"><button type="button" data-act="zoom" data-dir="1" aria-label="Aproximar mapa">+</button><button type="button" data-act="zoom" data-dir="-1" aria-label="Afastar mapa">−</button></div><p class="map-note">Mapa ilustrativo. O Google Maps entra quando os endereços oficiais forem cadastrados.</p></div>';
+}
+function chipsHTML(list, attr, current){
+  return list.map(function(c){return '<button class="chip" type="button" data-act="'+attr+'" data-'+attr+'="'+esc(c)+'" aria-pressed="'+(c===current)+'">'+esc(c)+'</button>'}).join("");
+}
+function unidadeSelect(){
+  return '<select id="unidade" aria-label="Unidade para preços locais"><option value=""'+(state.loja?'':' selected')+'>Todas as unidades</option>'+LOJAS.map(function(l){return '<option value="'+l.id+'"'+(state.loja===l.id?' selected':'')+'>'+esc(l.nome)+' · '+esc(l.bairro)+'</option>'}).join("")+'</select>';
+}
+function navHTML(current){
+  return PAGES.map(function(p){return '<a href="#'+p[0]+'" data-nav="'+p[0]+'"'+(p[0]===current?' aria-current="page"':'')+'>'+p[1]+'</a>'}).join("");
+}
+function tabHTML(current){
+  var items=[["inicio","Início"],["ofertas","Ofertas"],["lojas","Lojas"]];
+  return items.map(function(p){return '<a href="#'+p[0]+'" data-nav="'+p[0]+'"'+(p[0]===current?' aria-current="page"':'')+'>'+p[1]+'</a>'}).join("")+'<button type="button" data-act="open-menu">Menu</button>';
+}
+
+function pageInicio(){
+  var off=maxOff();
+  return '<section class="hero"><div class="wrap hero-grid"><div><span class="kicker">CAMPANHA (EXEMPLO)</span><h1>A economia que chega à sua mesa.</h1><p class="lead">Ofertas toda semana nas 17 lojas da Rede Serve Mais em Cuiabá e Várzea Grande.</p><div class="hero-actions"><a class="btn btn-y" href="#ofertas">Ver ofertas</a><a class="btn btn-w" href="#lojas">Encontrar uma unidade</a></div><div class="stats"><div><b>17</b><span>unidades</span></div><div><b>2</b><span>cidades</span></div><div><b>7</b><span>setores</span></div></div></div><div class="hero-visual"><span class="orb orb-y"></span><span class="orb orb-r"></span><div class="shot"><span>Foto da campanha (a produzir)</span></div><div class="deal"><small>OFERTÃO DA SEMANA</small><strong>até '+off+'% OFF</strong><em>valor ilustrativo</em></div></div></div></section>'
+  +'<section class="sec"><div class="wrap"><div class="sec-head"><div><h2>Ofertas em destaque</h2><div class="accent"></div><p class="sub">Selecionadas para a semana · valores ilustrativos</p></div><a class="btn btn-line" href="#ofertas">Ver todas as promoções</a></div><div class="chips" id="homeChips">'+chipsHTML(["Todas","Hortifruti","Açougue","Mercearia","Bebidas"],"home",state.homeCat)+'</div><div class="grid" id="homeGrid" style="margin-top:16px"></div></div></section>'
+  +'<section class="sec" style="padding-top:0"><div class="wrap"><h2>Campanhas da rede</h2><div class="accent"></div><div class="camp-grid"><article class="camp camp-red"><span class="orb"></span><span class="tag">OFERTÃO DA SEMANA</span><h3>Toda semana, preço de verdade.</h3><a class="btn btn-y" href="#ofertas/ofertao-da-semana">Conferir</a></article><article class="camp camp-yellow"><span class="orb"></span><span class="tag">FECHA MÊS</span><h3>Fecha Mês com economia.</h3><a class="btn btn-r" href="#ofertas/fecha-mes">Conferir</a></article></div><div class="mini-camps"><a class="mini" href="#ofertas/sazonais" style="border-left:6px solid var(--yellow)"><b>Campanhas sazonais</b><span>Páscoa, Natal e Festa Junina (exemplos).</span></a><button class="mini" type="button" data-act="acoes" style="border-left:6px solid var(--red);text-align:left;width:100%;cursor:pointer"><b>Ações especiais</b><span>Dias de desconto e parcerias da rede.</span></button></div></div></section>'
+  +'<section class="sec" style="padding-top:0"><div class="wrap"><div class="sec-head"><div><h2>Compre por setor</h2><div class="accent"></div></div><a class="btn btn-line" href="#setores">Ver setores</a></div><div class="sectors">'+SETORES.map(function(s){return '<a class="sector" href="#ofertas/'+slug(s.nome)+'"><i style="background:'+s.cor+';color:'+s.tinta+'">'+icon(s.icon,s.tinta)+'</i>'+esc(s.nome)+'</a>'}).join("")+'</div><p class="note">Ícones provisórios. As fotos de cada setor entram na produção.</p></div></section>'
+  +'<section class="sec" style="padding-top:0"><div class="wrap"><div class="sec-head"><div><h2>Nossas lojas</h2><div class="accent"></div><p class="sub">17 unidades em Cuiabá e Várzea Grande</p></div><a class="btn btn-line" href="#lojas">Ver todas</a></div><div class="lojas-layout"><div id="homeLojas"></div><div class="map-panel">'+mapHTML(true)+'</div></div></div></section>';
+}
+function pageOfertas(){
+  return '<section class="wrap page-hero"><span class="blob" aria-hidden="true"></span><h1>Ofertas</h1><p class="sub" style="max-width:62ch;margin-top:8px">Confira as promoções da semana e das campanhas da rede. Valores meramente ilustrativos.</p><div class="toolbar"><div class="chips" id="filtros">'+chipsHTML(FILTROS,"filtro",state.filtro)+'</div></div><div class="toolbar"><input class="search" id="qOferta" type="search" placeholder="Buscar um produto" value="'+esc(state.oq)+'" aria-label="Buscar um produto"><label class="sr-only" for="ordem">Ordenar</label><select id="ordem" aria-label="Ordenar ofertas"><option value="desconto"'+(state.ordem==="desconto"?" selected":"")+'>Maior desconto</option><option value="menor"'+(state.ordem==="menor"?" selected":"")+'>Menor preço</option><option value="maior"'+(state.ordem==="maior"?" selected":"")+'>Maior preço</option><option value="nome"'+(state.ordem==="nome"?" selected":"")+'>Nome</option></select></div><p class="note" id="precoNota"></p><div class="toolbar" style="margin-top:0"><label for="unidade" style="font-weight:600">Selecione sua unidade para ver preços locais</label>'+unidadeSelect()+'<span id="offerCount" class="note"></span></div><div class="grid" id="offerGrid"></div><div class="banner" id="campBanner"><span class="orb"></span><div class="txt"><span class="kicker" style="background:rgba(255,255,255,.45);color:var(--ink)">FECHA MÊS</span><h2 style="margin:8px 0">Campanha em destaque</h2><p>Banner de campanha com período de validade, regras resumidas e botão de ação (exemplo).</p></div><button class="btn btn-r" type="button" data-act="regulamento" data-camp="Fecha Mês">Ver regulamento</button></div><div class="center"><button class="btn btn-line" type="button" id="loadMore" data-act="mais">Carregar mais ofertas</button></div></section>';
+}
+function pageLojas(){
+  return '<section class="wrap page-hero"><h1>Nossas lojas</h1><div class="accent"></div><p class="sub">17 unidades · Cuiabá e Várzea Grande · dados demonstrativos</p><div class="finder" style="margin-top:18px"><div class="loja-tools"><input class="search" id="qLoja" style="max-width:none;margin-bottom:12px" type="search" placeholder="Buscar por bairro ou cidade" value="'+esc(state.q)+'" aria-label="Buscar por bairro ou cidade"><div class="chips" id="cityChips">'+chipsHTML(["Todas","Cuiabá","Várzea Grande"],"cidade",state.cidade)+'<button class="chip" type="button" id="abertoBtn" data-act="aberto" aria-pressed="'+(state.aberto?"true":"false")+'">Aberto agora</button></div><p class="note" id="lojaCount"></p></div><div class="map-panel">'+mapHTML(false)+'</div><div id="lojaList"></div></div></section>';
+}
+function pageSetores(){
+  return '<section class="wrap page-hero"><span class="blob" aria-hidden="true"></span><h1>Setores</h1><p class="sub" style="margin-top:8px">Tudo o que a família precisa em um só lugar.</p><div class="grid" style="margin-top:22px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))">'+SETORES.map(function(s){return '<a class="pcard" href="#ofertas/'+slug(s.nome)+'" style="text-decoration:none;min-height:220px"><i style="width:72px;height:72px;border-radius:50%;display:grid;place-items:center;background:'+s.cor+'">'+icon(s.icon,s.tinta)+'</i><h3 style="margin-top:8px">'+esc(s.nome)+'</h3><p class="unit">'+esc(s.desc)+'</p><span class="note">Ver ofertas</span></a>'}).join("")+'</div></section>';
+}
+function pageInst(){
+  return '<section class="wrap page-hero"><div class="intro"><div><p class="kicker-dark">INSTITUCIONAL</p><h1 style="margin-top:8px">Uma rede feita de família.</h1><p class="sub" style="margin-top:12px">Texto institucional demonstrativo: a história, a trajetória e a proximidade da Rede Serve Mais com os consumidores mato-grossenses serão redigidos com a empresa.</p></div><div class="shot" style="min-height:260px"><span>Fotografia — equipe e fachada de uma loja da rede (a produzir)</span></div></div><h2 style="margin-top:48px">Nossa trajetória</h2><div class="accent"></div><p class="sub">Linha do tempo ilustrativa. Anos e fatos oficiais serão confirmados pela empresa.</p><ol class="time"><li><span class="dot"></span><h3>Ano — fundação</h3><p class="unit">O ano e o relato de origem entram aqui, contados pela família.</p></li><li><span class="dot"></span><h3>Ano — expansão</h3><p class="unit">Os marcos de crescimento da rede, a confirmar.</p></li><li><span class="dot"></span><h3>Ano — nova fase</h3><p class="unit">As mudanças recentes da marca e das lojas.</p></li><li><span class="dot"></span><h3>Hoje — 17 lojas</h3><p class="unit">Cuiabá e Várzea Grande, perto de quem faz a feira.</p></li></ol><h2 style="margin-top:42px">Nossos valores</h2><div class="accent"></div><p class="sub">Textos de exemplo, para a empresa revisar.</p><div class="values" style="margin-top:16px"><article class="vcard"><i style="background:var(--yellow);color:var(--ink)">1</i><h3>Proximidade</h3><p class="unit">Atendimento que conhece o cliente.</p></article><article class="vcard"><i style="background:var(--red)">2</i><h3>Preço justo</h3><p class="unit">Economia em toda a semana.</p></article><article class="vcard"><i style="background:var(--yellow);color:var(--ink)">3</i><h3>Qualidade</h3><p class="unit">Produtos frescos e selecionados.</p></article><article class="vcard"><i style="background:var(--red)">4</i><h3>Região</h3><p class="unit">Orgulho de servir Mato Grosso.</p></article></div><div class="stats-bar"><div><b>17</b><span>unidades</span></div><div><b>2</b><span>cidades atendidas</span></div><div><b>a confirmar</b><span>colaboradores</span></div><div><b>a confirmar</b><span>anos de história</span></div></div></section>';
+}
+function pageContato(){
+  var opts=["Dúvida","Elogio","Sugestão","Loja","Trabalhe conosco","Imprensa e parcerias"];
+  return '<section class="wrap page-hero"><h1>Fale com a Serve Mais</h1><div class="accent"></div><p class="sub">Dúvidas, sugestões ou elogios? Respondemos o mais rápido possível.</p><div class="contact" style="margin-top:20px"><form class="card" id="contatoForm" novalidate><div class="form-grid"><div class="field"><label for="nome">Nome completo</label><input id="nome" name="nome" autocomplete="name" required><p class="err" id="err-nome"></p></div><div class="field"><label for="email">E-mail</label><input id="email" name="email" type="email" autocomplete="email" required><p class="err" id="err-email"></p></div><div class="field"><label for="fone">Telefone / WhatsApp</label><input id="fone" name="fone" inputmode="tel" autocomplete="tel"></div><div class="field"><label for="unid">Unidade de interesse</label><select id="unid" name="unid"><option value="">Escolha (opcional)</option>'+LOJAS.map(function(l){return '<option>'+esc(l.nome)+' · '+esc(l.cidade)+'</option>'}).join("")+'</select></div><div class="field full"><label for="assunto">Assunto</label><select id="assunto" name="assunto" required><option value="">Selecione</option>'+opts.map(function(o){return '<option'+(state.assunto===o?' selected':'')+'>'+o+'</option>'}).join("")+'</select><p class="err" id="err-assunto"></p></div><div class="field full"><label for="mensagem">Mensagem</label><textarea id="mensagem" name="mensagem" required></textarea><p class="err" id="err-mensagem"></p></div></div><p style="margin-top:8px"><button class="btn btn-r" type="submit">Enviar mensagem</button></p><p id="formOk" role="status"></p></form><div class="channels"><button class="channel ch-r" type="button" data-act="canal" data-assunto="Dúvida"><span><b>SAC</b><span>(65) 3000-0000 · sac@exemplo.com</span></span><i>→</i></button><button class="channel ch-y" type="button" data-act="ligar" data-tel="(65) 90000-0000"><span><b>WhatsApp</b><span>Número demonstrativo</span></span><i>→</i></button><button class="channel ch-w" type="button" data-act="canal" data-assunto="Trabalhe conosco"><span><b>Trabalhe conosco</b><span>Envie seu currículo</span></span><i>→</i></button><button class="channel ch-w" type="button" data-act="canal" data-assunto="Imprensa e parcerias"><span><b>Imprensa e parcerias</b><span>Contato comercial</span></span><i>→</i></button></div></div></section>';
+}
+var views={inicio:pageInicio,ofertas:pageOfertas,lojas:pageLojas,setores:pageSetores,institucional:pageInst,contato:pageContato};
+
+function drawHome(){
+  var list=OFERTAS.filter(function(p){return matchFiltro(p,state.homeCat)}).slice(0,4);
+  var g=document.getElementById("homeGrid");if(!g)return;
+  g.innerHTML=list.map(cardHTML).join("")||'<p class="empty">Nenhuma oferta nesta categoria.</p>';
+  document.querySelectorAll("[data-home]").forEach(function(b){b.setAttribute("aria-pressed", b.dataset.home===state.homeCat)});
+  var box=document.getElementById("homeLojas");if(box) box.innerHTML=LOJAS.slice(0,4).map(lojaCard).join("");
+  paintQty();applyZoom();
+}
+function drawOffers(){
+  var all=sorted(filtradas());var slice=all.slice(0,state.limite);
+  var g=document.getElementById("offerGrid");if(!g)return;
+  g.innerHTML=slice.map(cardHTML).join("")||'<div class="empty" style="grid-column:1/-1">Nenhuma oferta com esse filtro. Tente outra categoria ou limpe a busca.</div>';
+  document.getElementById("offerCount").textContent=all.length+(all.length===1?" oferta":" ofertas");
+  var more=document.getElementById("loadMore");if(more) more.hidden=state.limite>=all.length||all.length===0;
+  document.querySelectorAll("[data-filtro]").forEach(function(b){b.setAttribute("aria-pressed", b.dataset.filtro===state.filtro)});
+  var nota=document.getElementById("precoNota");
+  if(nota) nota.textContent=state.loja?"Preços ilustrativos na "+lojaById(state.loja).nome+" ("+lojaById(state.loja).bairro+").":"Preços ilustrativos, iguais em todas as unidades até o cadastro oficial.";
+  paintQty();
+}
+function drawLojas(){
+  var list=lojasFiltradas();
+  var box=document.getElementById("lojaList");if(!box)return;
+  var n=document.getElementById("lojaCount");if(n) n.textContent=list.length+(list.length===1?" unidade":" unidades");
+  box.innerHTML=list.map(lojaCard).join("")||'<p class="empty">'+(state.aberto?"Nenhuma unidade aberta agora com esses filtros. Os horários são exemplos.":"Nenhuma unidade encontrada. Tente outro bairro ou cidade.")+'</p>';
+  var ids={};list.forEach(function(l){ids[l.id]=true});
+  document.querySelectorAll(".pin").forEach(function(p){p.classList.toggle("dim", !ids[p.dataset.id])});
+  document.querySelectorAll("[data-cidade]").forEach(function(b){b.setAttribute("aria-pressed", b.dataset.cidade===state.cidade)});
+  var ab=document.getElementById("abertoBtn");if(ab) ab.setAttribute("aria-pressed", state.aberto?"true":"false");
+  if(state.pin && !ids[state.pin]){var pop=document.getElementById("mapPop");if(pop) pop.hidden=true;document.querySelectorAll(".pin").forEach(function(p){p.classList.remove("on")})}
+  else syncPin();
+}
+function syncPin(){
+  document.querySelectorAll(".pin").forEach(function(p){p.classList.toggle("on", Number(p.dataset.id)===state.pin)});
+  document.querySelectorAll(".loja").forEach(function(c){c.classList.toggle("is-on", Number(c.dataset.id)===state.pin)});
+  var pop=document.getElementById("mapPop");var l=state.pin&&lojaById(state.pin);if(!pop)return;
+  if(!l){pop.hidden=true;return}
+  var st=statusLoja(l);pop.hidden=false;pop.style.left=l.x+"%";pop.style.top=l.y+"%";pop.classList.toggle("flip", l.x>62);
+  pop.innerHTML='<b>'+esc(l.nome)+'</b><p>'+esc(st.txt)+'<br>'+esc(l.bairro)+' · '+esc(l.cidade)+'</p><button class="btn btn-r" type="button" data-act="detalhe" data-id="'+l.id+'">Detalhes</button>';
+}
+function applyZoom(){var c=document.getElementById("mapCanvas");if(c) c.style.transform="scale("+state.zoom+")"}
+
+function renderLista(){
+  var body=document.getElementById("listaBody");var foot=document.getElementById("listaFoot");
+  if(!state.lista.length){body.innerHTML='<p class="empty">Sua lista está vazia. Toque no + das ofertas para montar a feira.</p><p style="margin-top:12px"><a class="btn btn-r" href="#ofertas" data-act="close-lista">Ver ofertas</a></p>';foot.innerHTML="";return}
+  body.innerHTML=state.lista.map(function(it){
+    var p=OFERTAS.filter(function(o){return o.id===it.id})[0];if(!p)return "";
+    return '<div class="line"><div class="nm"><b>'+esc(p.nome)+'</b><div class="unit">'+money(adj(p.preco,state.loja))+'</div></div><div class="step"><button type="button" data-act="qtd" data-id="'+p.id+'" data-d="-1" aria-label="Diminuir '+esc(p.nome)+'">−</button><span>'+it.qtd+'</span><button type="button" data-act="qtd" data-id="'+p.id+'" data-d="1" aria-label="Aumentar '+esc(p.nome)+'">+</button></div></div>';
+  }).join("");
+  foot.innerHTML='<p class="unit">Total ilustrativo</p><p class="now">'+money(totalLista())+'</p><p class="unit" style="margin:6px 0 10px">'+(state.loja?"Na "+esc(lojaById(state.loja).nome):"Preço base, sem unidade escolhida")+'</p><button class="btn btn-line" type="button" data-act="limpar">Limpar lista</button>';
+}
+var lastFocus=null;
+function lock(){document.body.classList.toggle("lock", !document.getElementById("menu").hidden||!document.getElementById("lista").hidden||!document.getElementById("dialog").hidden)}
+function openLista(){lastFocus=document.activeElement;document.getElementById("listaBack").hidden=false;document.getElementById("lista").hidden=false;renderLista();lock();document.querySelector("#lista .x").focus()}
+function closeLista(){document.getElementById("lista").hidden=true;document.getElementById("listaBack").hidden=true;lock();if(lastFocus) lastFocus.focus()}
+function openMenu(){lastFocus=document.activeElement;document.getElementById("menu").hidden=false;lock();document.querySelector("#menu .x").focus()}
+function closeMenu(){document.getElementById("menu").hidden=true;lock();if(lastFocus) lastFocus.focus()}
+function openDialog(title, html){lastFocus=document.activeElement;document.getElementById("dlgBody").innerHTML='<h2 id="dlgTitle">'+esc(title)+'</h2><div style="margin-top:10px">'+html+'</div>';document.getElementById("dialog").hidden=false;lock();document.querySelector("#dialog .x").focus()}
+function closeDialog(){document.getElementById("dialog").hidden=true;lock();if(lastFocus) lastFocus.focus()}
+
+var current="";
+function parse(){var raw=(location.hash||"#inicio").replace("#","");var bits=raw.split("/");var page=views[bits[0]]?bits[0]:"inicio";return {page:page,arg:bits[1]||""}}
+function applyArg(page, arg){
+  if(page==="ofertas"){if(!arg) state.filtro="Todas";else{var label=FILTROS.filter(function(f){return slug(f)===arg})[0];if(label) state.filtro=label}}
+  if(page==="lojas"&&/^\d+$/.test(arg)) state.pin=Number(arg);
+}
+function route(){
+  var p=parse();applyArg(p.page,p.arg);
+  var changed=p.page!==current;current=p.page;
+  document.getElementById("navDesktop").innerHTML=navHTML(p.page);
+  document.getElementById("navMobile").innerHTML=navHTML(p.page);
+  document.getElementById("tabbar").innerHTML=tabHTML(p.page);
+  var nome=PAGES.filter(function(x){return x[0]===p.page})[0][1];
+  document.title=(p.page==="inicio"?"Rede Serve Mais — Cuiabá e Várzea Grande":nome+" | Rede Serve Mais");
+  if(changed){var main=document.getElementById("conteudo");main.innerHTML='<div class="page">'+views[p.page]()+'</div>';main.classList.remove("in");void main.offsetWidth;main.classList.add("in");window.scrollTo(0,0)}
+  if(p.page==="inicio") drawHome();
+  if(p.page==="ofertas") drawOffers();
+  if(p.page==="lojas"){if(!state.pin) state.pin=1;drawLojas();applyZoom()}
+  if(p.page==="contato"&&state.assunto){var sel=document.getElementById("assunto");if(sel) sel.value=state.assunto}
+  paintQty();
+}
+
+document.addEventListener("click", function(e){
+  if(e.target.closest("#menu a")) closeMenu();
+  var el=e.target.closest("[data-act]");
+  if(e.target.id==="dialog"){closeDialog();return}
+  if(!el) return;
+  var act=el.dataset.act;
+  if(act==="dismiss-demo"){document.getElementById("demo").hidden=true;sessionStorage.setItem("sm-demo","off")}
+  if(act==="open-menu") openMenu();
+  if(act==="close-menu") closeMenu();
+  if(act==="open-lista") openLista();
+  if(act==="close-lista") closeLista();
+  if(act==="close-dialog") closeDialog();
+  if(act==="home"){state.homeCat=el.dataset.home;drawHome()}
+  if(act==="filtro"){state.filtro=el.dataset.filtro;state.limite=8;var next="#ofertas"+(state.filtro==="Todas"?"":"/"+slug(state.filtro));if(location.hash!==next) location.hash=next;else drawOffers()}
+  if(act==="add"){setQty(el.dataset.add, qtyOf(el.dataset.add)+1, true);toast(el.dataset.name+" na lista")}
+  if(act==="mais"){state.limite+=8;drawOffers()}
+  if(act==="cidade"){state.cidade=el.dataset.cidade;drawLojas()}
+  if(act==="aberto"){state.aberto=!state.aberto;drawLojas()}
+  if(act==="zoom"){state.zoom=Math.min(1.6, Math.max(1, state.zoom+Number(el.dataset.dir)*0.15));applyZoom()}
+  if(act==="pin"){
+    var id=Number(el.dataset.id);
+    if(el.classList.contains("dim")){state.cidade="Todas";state.aberto=false;state.q="";var inp=document.getElementById("qLoja");if(inp) inp.value="";toast("Mostrando todas as unidades")}
+    var next="#lojas/"+id;if(location.hash!==next) location.hash=next;else{state.pin=id;drawLojas()}
+  }
+  if(act==="detalhe"){var card=document.getElementById("loja-"+el.dataset.id);if(card) card.scrollIntoView({behavior:"smooth",block:"nearest"})}
+  if(act==="ligar") toast("Telefone demonstrativo: "+el.dataset.tel);
+  if(act==="usar-loja"){state.loja=Number(el.dataset.id);saveLoja();if(document.getElementById("lojaList")) drawLojas();if(document.getElementById("homeLojas")) drawHome();if(document.getElementById("offerGrid")) drawOffers();toast("Preços da "+lojaById(state.loja).nome+" (exemplo)")}
+  if(act==="social") toast("O perfil oficial da rede ainda será informado.");
+  if(act==="acoes") openDialog("Ações especiais","<p>Dias de desconto e parcerias da rede. O calendário oficial será publicado aqui. Este texto é um exemplo.</p>");
+  if(act==="regulamento") openDialog("Regulamento · "+el.dataset.camp,"<p>Regulamento ilustrativo. As regras, o período e as lojas participantes serão informados pela Rede Serve Mais em cada campanha. Nada aqui é uma oferta válida.</p>");
+  if(act==="qtd"){setQty(el.dataset.id, qtyOf(el.dataset.id)+Number(el.dataset.d))}
+  if(act==="limpar"){state.lista=[];saveLista();renderLista();paintQty()}
+  if(act==="canal"){state.assunto=el.dataset.assunto;if((location.hash||"")!=="#contato") location.hash="#contato";else{var sel=document.getElementById("assunto");if(sel){sel.value=state.assunto;sel.focus()}}}
+  if(el.closest("#menu")&&el.tagName==="A") closeMenu();
+});
+document.addEventListener("input", function(e){
+  if(e.target.id==="qOferta"){state.oq=e.target.value;state.limite=8;drawOffers()}
+  if(e.target.id==="qLoja"){state.q=e.target.value;drawLojas()}
+});
+document.addEventListener("change", function(e){
+  if(e.target.id==="unidade"){state.loja=e.target.value?Number(e.target.value):null;saveLoja();drawOffers();toast(state.loja?"Preços da "+lojaById(state.loja).nome:"Preço base ilustrativo")}
+  if(e.target.id==="ordem"){state.ordem=e.target.value;state.limite=8;drawOffers()}
+  if(e.target.id==="assunto") state.assunto=e.target.value;
+});
+document.addEventListener("submit", function(e){
+  if(e.target.id!=="contatoForm") return;
+  e.preventDefault();
+  var f=e.target;
+  var erros={};
+  if(f.nome.value.trim().length<2) erros.nome="Digite seu nome.";
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email.value.trim())) erros.email="Digite um e-mail válido.";
+  if(!f.assunto.value) erros.assunto="Escolha um assunto.";
+  if(f.mensagem.value.trim().length<10) erros.mensagem="Conte um pouco mais (mínimo de 10 letras).";
+  ["nome","email","assunto","mensagem"].forEach(function(k){
+    var input=f[k], msg=document.getElementById("err-"+k);
+    input.setAttribute("aria-invalid", erros[k]?"true":"false");
+    if(msg) msg.textContent=erros[k]||"";
+  });
+  var ok=document.getElementById("formOk");
+  if(Object.keys(erros).length){ok.textContent="";f.querySelector("[aria-invalid=true]").focus();return}
+  ok.innerHTML='<span class="success"><strong>Campos conferidos.</strong> Nesta proposta o envio ainda é demonstrativo: nenhuma mensagem saiu do seu navegador.</span>';
+  f.reset();state.assunto="";
+});
+document.addEventListener("keydown", function(e){
+  if(e.key!=="Escape") return;
+  if(!document.getElementById("dialog").hidden) closeDialog();
+  else if(!document.getElementById("lista").hidden) closeLista();
+  else if(!document.getElementById("menu").hidden) closeMenu();
+});
+window.addEventListener("hashchange", route);
+window.addEventListener("scroll", function(){document.getElementById("topo").classList.toggle("scrolled", window.scrollY>4)}, {passive:true});
+if(sessionStorage.getItem("sm-demo")==="off") document.getElementById("demo").hidden=true;
+route();
+</script>
+</body>
+</html>

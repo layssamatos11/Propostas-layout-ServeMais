@@ -1,0 +1,102 @@
+export const NEWS_CATS = ['Todas', 'Institucional', 'Lojas', 'Campanhas', 'Felitá']
+
+export const NOTICIAS = [
+  {
+    slug: 'ofertao-nas-lojas',
+    cat: 'Campanhas',
+    titulo: 'Ofertão da semana chega às 17 lojas',
+    linha: 'Uma edição demonstrativa de como a campanha semanal apareceria no jornal da rede.',
+    data: 'Data a definir',
+    cor: '#BD1D1D',
+    destaque: true,
+    corpo: [
+      'Este texto mostra o miolo de uma matéria. A redação oficial, a foto e a data entram quando a rede publicar.',
+      'O destaque reserva espaço para o banner da campanha e um caminho até as ofertas da semana.',
+    ],
+  },
+  {
+    slug: 'felita-momentos',
+    cat: 'Felitá',
+    titulo: 'Felitá passa a ser contada por momentos do dia',
+    linha: 'Manhã, tarde, noite e celebrações organizam a marca exclusiva.',
+    data: 'Data a definir',
+    cor: '#FBB90E',
+    corpo: ['A jornada é um exemplo de navegação. A história oficial da marca ainda será fornecida.'],
+  },
+  {
+    slug: 'achar-unidade',
+    cat: 'Lojas',
+    titulo: 'Como achar a unidade do seu bairro',
+    linha: 'Busca, filtro por cidade e o status de aberto agora no cartão da loja.',
+    data: 'Data a definir',
+    cor: '#1E8E4E',
+    corpo: ['Os endereços desta proposta são exemplos. O mapa oficial entra na produção.'],
+  },
+  {
+    slug: 'rede-familiar',
+    cat: 'Institucional',
+    titulo: 'Uma rede feita de família',
+    linha: 'A trajetória será escrita com a empresa. A página institucional já guarda o lugar.',
+    data: 'Data a definir',
+    cor: '#8F1212',
+    corpo: ['Marcos de fundação, expansão e a fase atual ficam marcados como a confirmar.'],
+  },
+  {
+    slug: 'fecha-mes',
+    cat: 'Campanhas',
+    titulo: 'Fecha Mês reserva o banner da campanha',
+    linha: 'Validade e regulamento serão publicados pela rede.',
+    data: 'Data a definir',
+    cor: '#F4B183',
+    corpo: ['O bloco de campanha em destaque mostra o botão de regulamento sem inventar regras.'],
+  },
+  {
+    slug: 'domingo-no-cartao',
+    cat: 'Lojas',
+    titulo: 'Domingo e feriado no cartão da unidade',
+    linha: 'Cada loja de exemplo separa o horário da semana e o do domingo.',
+    data: 'Data a definir',
+    cor: '#D9EFE4',
+    corpo: ['Aberto agora usa o relógio deste aparelho e os horários ilustrativos.'],
+  },
+  {
+    slug: 'pascoa-exemplo',
+    cat: 'Campanhas',
+    titulo: 'Páscoa, Natal e Festa Junina têm lugar no calendário',
+    linha: 'As campanhas sazonais aparecem como exemplos, com período a definir.',
+    data: 'Data a definir',
+    cor: '#FFF1C7',
+    corpo: ['Nenhum regulamento foi inventado. O cartão só reserva o espaço.'],
+  },
+  {
+    slug: 'cartao-rede',
+    cat: 'Institucional',
+    titulo: 'O Serve Mais Card guarda o lugar do cartão',
+    linha: 'Pedido, regras e atendimento ainda serão informados.',
+    data: 'Data a definir',
+    cor: '#F6D7C8',
+    corpo: ['O botão do rodapé abre esse aviso. Não há cadastro nesta proposta.'],
+  },
+  {
+    slug: 'horario-de-exemplo',
+    cat: 'Lojas',
+    titulo: 'Dezessete cartões, duas cidades',
+    linha: 'Cuiabá e Várzea Grande dividem a lista até os endereços oficiais chegarem.',
+    data: 'Data a definir',
+    cor: '#E7D3B4',
+    corpo: ['Como chegar abre uma busca no Google Maps com o endereço de exemplo.'],
+  },
+  {
+    slug: 'linhas-felita',
+    cat: 'Felitá',
+    titulo: 'Cinco linhas, uma mesma promessa',
+    linha: 'Chef, Care, Clean, Home e Baby organizam o catálogo ilustrativo.',
+    data: 'Data a definir',
+    cor: '#F8E0B0',
+    corpo: ['Os nomes de produto que ainda não estão na oferta da semana ficam marcados como a definir.'],
+  },
+]
+
+export function articleBySlug(slug) {
+  return NOTICIAS.find((item) => item.slug === slug)
+}

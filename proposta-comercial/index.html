@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Proposta comercial — Rede Serve Mais</title>
+  <style>
+    @font-face { font-family: Archivo; font-weight: 500; src: url("fonts/archivo-500.ttf") format("truetype"); }
+    @font-face { font-family: Archivo; font-weight: 600; src: url("fonts/archivo-600.ttf") format("truetype"); }
+    @font-face { font-family: Archivo; font-weight: 700; src: url("fonts/archivo-700.ttf") format("truetype"); }
+    @font-face { font-family: "Archivo Black"; font-weight: 400; src: url("fonts/archivo-black.ttf") format("truetype"); }
+    @font-face { font-family: Fraunces; font-style: italic; font-weight: 560; src: url("fonts/fraunces-italic.ttf") format("truetype"); }
+
+    :root {
+      --red: #bd1d1d;
+      --deep: #7e0f0f;
+      --yellow: #fbb90e;
+      --cream: #fff6e4;
+      --ink: #231815;
+      --muted: #6a564c;
+      --line: rgba(35, 24, 21, 0.12);
+    }
+
+    @page { size: A4; margin: 0; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      color: var(--ink);
+      font-family: Archivo, "Liberation Sans", sans-serif;
+      font-size: 11pt;
+      line-height: 1.45;
+      background: #fff;
+    }
+    h1, h2, h3, p { margin: 0; }
+    img { display: block; }
+
+    .page {
+      width: 210mm;
+      height: 297mm;
+      overflow: hidden;
+      position: relative;
+      break-after: page;
+      break-inside: avoid;
+      page-break-after: always;
+      page-break-inside: avoid;
+      background: var(--cream);
+    }
+    .page:last-child { page-break-after: auto; }
+
+    .top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 24mm;
+      padding: 0 16mm;
+      background: #fff;
+      border-bottom: 4px solid var(--yellow);
+    }
+    .top img { width: 38mm; height: auto; }
+    .top p { font-size: 8.5pt; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+
+    .pad { padding: 12mm 16mm 16mm; }
+    .olho {
+      color: var(--red);
+      font-size: 8.5pt;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin-top: 4mm;
+      font-family: "Archivo Black", Archivo, sans-serif;
+      font-weight: 400;
+      font-size: 34pt;
+      line-height: 0.96;
+      letter-spacing: -0.03em;
+      max-width: 15ch;
+    }
+    .lead { margin-top: 6mm; max-width: 42em; font-size: 12.5pt; color: var(--muted); }
+    em { font-family: Fraunces, Georgia, serif; font-style: italic; font-weight: 560; }
+
+    .cover-band {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: grid;
+      grid-template-columns: 1.3fr 0.8fr 1.1fr;
+      background: var(--deep);
+      color: #fff;
+    }
+    .cover-band div { padding: 8mm 7mm 9mm 16mm; }
+    .cover-band div + div { padding-left: 7mm; border-left: 1px solid rgba(255, 255, 255, 0.16); }
+    .cover-band small {
+      display: block;
+      color: var(--yellow);
+      font-size: 8pt;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .cover-band strong {
+      display: block;
+      margin-top: 2mm;
+      font-family: "Archivo Black", Archivo, sans-serif;
+      font-size: 22pt;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+    .cover-band span { display: block; margin-top: 2mm; font-size: 10pt; color: #f6e7d8; }
+
+    .foot {
+      position: absolute;
+      left: 16mm;
+      right: 16mm;
+      bottom: 7mm;
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 8.5pt;
+      font-weight: 600;
+    }
+    .page.dark-foot .foot { color: #f6e7d8; }
+
+    h2 {
+      margin-top: 2mm;
+      font-family: "Archivo Black", Archivo, sans-serif;
+      font-weight: 400;
+      font-size: 26pt;
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+
+    .price {
+      display: grid;
+      grid-template-columns: 1.4fr 0.8fr;
+      gap: 6mm;
+      margin-top: 8mm;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 5mm;
+      overflow: hidden;
+    }
+    .price .copy { padding: 7mm; }
+    .price h3 {
+      font-family: "Archivo Black", Archivo, sans-serif;
+      font-weight: 400;
+      font-size: 16pt;
+      letter-spacing: -0.03em;
+    }
+    .price .copy p { margin-top: 3mm; color: var(--muted); }
+    .valor {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 7mm;
+      background: var(--red);
+      color: #fff;
+    }
+    .valor small { font-size: 8.5pt; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--yellow); }
+    .valor b {
+      margin-top: 1mm;
+      font-family: "Archivo Black", Archivo, sans-serif;
+      font-weight: 400;
+      font-size: 26pt;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+    .valor span { margin-top: 1mm; font-size: 11pt; }
+
+    .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; margin-top: 5mm; }
+    .box { background: #fff; border-radius: 4mm; padding: 5mm 5.5mm; border: 1px solid var(--line); }
+    .box h3 { font-size: 11pt; font-weight: 700; }
+    .box ul { margin: 3mm 0 0; padding: 0; list-style: none; }
+    .box li { position: relative; padding-left: 5mm; margin-top: 2.2mm; }
+    .box li::before { content: ""; position: absolute; left: 0; top: 0.45em; width: 2.2mm; height: 2.2mm; border-radius: 50%; background: var(--yellow); }
+    .box.fora li::before { background: var(--red); }
+    .nota {
+      margin-top: 5mm;
+      padding: 4mm 5mm;
+      border-left: 3px solid var(--yellow);
+      background: #fff;
+      font-size: 10.5pt;
+    }
+
+    .lista { margin-top: 6mm; display: grid; gap: 3.2mm; }
+    .item {
+      display: grid;
+      grid-template-columns: 14mm 1fr auto;
+      gap: 4mm;
+      align-items: center;
+      padding: 3.6mm 4mm;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 4mm;
+    }
+    .num {
+      display: grid;
+      place-items: center;
+      width: 12mm;
+      height: 12mm;
+      border-radius: 3mm;
+      background: var(--red);
+      color: #fff;
+      font-family: "Archivo Black", Archivo, sans-serif;
+      font-size: 12pt;
+    }
+    .item h3 { font-size: 13pt; font-weight: 700; letter-spacing: -0.02em; }
+    .item .linha { margin-top: 0.4mm; font-size: 11.5pt; }
+    .item .texto { margin-top: 1mm; color: var(--muted); font-size: 10pt; }
+    .selo {
+      align-self: start;
+      padding: 1.4mm 3mm;
+      border-radius: 999px;
+      background: var(--cream);
+      color: var(--deep);
+      font-size: 8pt;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .escolha { margin-top: 5mm; display: grid; gap: 4mm; }
+    .bloco { background: #fff; border-radius: 4mm; padding: 5mm 5.5mm; border: 1px solid var(--line); }
+    .bloco h3 { font-size: 13pt; font-weight: 700; }
+    .bloco .sub { margin-top: 1mm; color: var(--muted); font-size: 10pt; }
+    .opcoes { margin-top: 3.5mm; display: grid; gap: 2.4mm; }
+    .op {
+      display: grid;
+      grid-template-columns: 6.5mm 1fr;
+      gap: 3mm;
+      align-items: center;
+      min-height: 8mm;
+      font-weight: 600;
+    }
+    .caixa {
+      width: 5.5mm;
+      height: 5.5mm;
+      border: 1.5px solid var(--ink);
+      border-radius: 1.2mm;
+      background: #fff;
+    }
+    .opcoes.duas { grid-template-columns: 1fr 1fr; }
+    .opcoes.cinco { grid-template-columns: 1fr 1fr; }
+
+    .passos { margin: 12mm 0 0; padding: 0; list-style: none; display: grid; gap: 3mm; max-width: 155mm; }
+    .passos li {
+      display: grid;
+      grid-template-columns: 10mm 1fr;
+      gap: 4mm;
+      align-items: center;
+      min-height: 14mm;
+      padding: 3mm 4mm;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 4mm;
+      font-weight: 600;
+    }
+    .passos b {
+      display: grid;
+      place-items: center;
+      width: 9mm;
+      height: 9mm;
+      border-radius: 50%;
+      background: var(--yellow);
+      font-family: "Archivo Black", Archivo, sans-serif;
+      font-weight: 400;
+    }
+    .assina { display: grid; grid-template-columns: 1fr 1fr; gap: 10mm; margin-top: 12mm; }
+    .assina span { display: block; border-bottom: 1px solid var(--ink); height: 12mm; }
+    .assina p { margin-top: 2mm; font-size: 9pt; font-weight: 700; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <section class="page">
+    <header class="top">
+      <img src="logo.png" alt="Rede Serve Mais">
+      <p>Proposta comercial</p>
+    </header>
+    <div class="pad">
+      <p class="olho">Cuiabá e Várzea Grande</p>
+      <h1>Manter o que já funciona. Escolher um site.</h1>
+      <p class="lead">A etapa 1 continua a aplicação em WordPress que a rede já tem. As cinco propostas de site são caminhos diferentes. Vocês escolhem uma. Elas não se somam e não entram todas no mesmo contrato.</p>
+      <ol class="passos">
+        <li><b>1</b><span>A etapa 1 mantém o WordPress, por R$ 10.000 por mês.</span></li>
+        <li><b>2</b><span>As cinco propostas mostram caminhos de site, para comparar.</span></li>
+        <li><b>3</b><span>Na última página, marquem a etapa 1 e uma única proposta.</span></li>
+      </ol>
+    </div>
+    <div class="cover-band">
+      <div>
+        <small>Etapa 1</small>
+        <strong>R$ 10.000</strong>
+        <span>por mês, para manter o WordPress atual</span>
+      </div>
+      <div>
+        <small>Sites novos</small>
+        <strong>5</strong>
+        <span>propostas, para escolher uma</span>
+      </div>
+      <div>
+        <small>O que segue</small>
+        <strong>1</strong>
+        <span>caminho marcado. Os outros ficam de fora.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="page">
+    <header class="top">
+      <img src="logo.png" alt="Rede Serve Mais">
+      <p>Etapa 1</p>
+    </header>
+    <div class="pad">
+      <p class="olho">Manter o que já tem</p>
+      <h2>A aplicação em WordPress permanece.</h2>
+      <p class="lead">Esta etapa não troca o site por um conceito novo. Ela cuida da aplicação que a rede já utiliza, com acompanhamento mensal.</p>
+      <div class="price">
+        <div class="copy">
+          <h3>Continuidade da aplicação atual</h3>
+          <p>O WordPress segue no ar. O valor ao lado é só desta etapa. A escolha de um site novo, se acontecer, é uma decisão à parte, na folha final.</p>
+        </div>
+        <div class="valor">
+          <small>Valor mensal</small>
+          <b>R$ 10.000</b>
+          <span>dez mil reais por mês</span>
+        </div>
+      </div>
+      <div class="cols">
+        <article class="box">
+          <h3>Esta etapa cobre</h3>
+          <ul>
+            <li>A permanência da aplicação WordPress que já está publicada.</li>
+            <li>O acompanhamento mensal desse site.</li>
+            <li>A continuidade do que a rede usa hoje, sem trocar o sistema.</li>
+          </ul>
+        </article>
+        <article class="box fora">
+          <h3>Esta etapa não cobre</h3>
+          <ul>
+            <li>A construção de uma das cinco propostas de site.</li>
+            <li>A troca do WordPress pelo conceito escolhido.</li>
+            <li>Fotos, textos e preços oficiais de um site novo.</li>
+          </ul>
+        </article>
+      </div>
+      <p class="nota">A etapa 1 pode seguir sozinha. Escolher um site novo não é condição para manter o WordPress, e manter o WordPress não obriga a contratar um dos cinco caminhos.</p>
+    </div>
+    <footer class="foot"><span>Rede Serve Mais</span><span>2</span></footer>
+  </section>
+
+  <section class="page">
+    <header class="top">
+      <img src="logo.png" alt="Rede Serve Mais">
+      <p>Propostas para escolher</p>
+    </header>
+    <div class="pad">
+      <p class="olho">Cinco caminhos, uma escolha</p>
+      <h2>O site novo é uma destas propostas.</h2>
+      <p class="lead">Cada proposta é um site completo de conceito. Preços, endereços, horários e textos dentro delas são exemplos, para a rede ver o caminho. Depois da escolha, só o conceito marcado segue para desenvolvimento.</p>
+      <div class="lista">
+        <article class="item">
+          <span class="num">01</span>
+          <div>
+            <h3>Catálogo</h3>
+            <p class="linha"><em>A economia que chega à sua mesa.</em></p>
+            <p class="texto">Ofertas da semana, setores e as 17 lojas, com a lista ao lado da navegação. Um supermercado direto, feito para achar a oferta.</p>
+          </div>
+          <span class="selo">Para escolha</span>
+        </article>
+        <article class="item">
+          <span class="num">02</span>
+          <div>
+            <h3>Gôndola</h3>
+            <p class="linha"><em>Hoje tem oferta.</em></p>
+            <p class="texto">A lista vira o cupom da compra. Corredores, casa Felitá, jornal e vagas no mesmo caminho.</p>
+          </div>
+          <span class="selo">Para escolha</span>
+        </article>
+        <article class="item">
+          <span class="num">03</span>
+          <div>
+            <h3>Família</h3>
+            <p class="linha"><em>Tudo que a sua casa precisa, perto de você.</em></p>
+            <p class="texto">Editorial da rede familiar, com a marca Felitá e um destino claro para cada assunto. A página recebe como uma casa, não como um encarte.</p>
+          </div>
+          <span class="selo">Para escolha</span>
+        </article>
+        <article class="item">
+          <span class="num">04</span>
+          <div>
+            <h3>Mais perto</h3>
+            <p class="linha"><em>Mais perto de você. Mais por menos.</em></p>
+            <p class="texto">Ofertas e unidades em primeiro plano, do papel da campanha até a lista das lojas. A oferta e a loja mais próxima conduzem a visita.</p>
+          </div>
+          <span class="selo">Para escolha</span>
+        </article>
+        <article class="item">
+          <span class="num">05</span>
+          <div>
+            <h3>Sua lista</h3>
+            <p class="linha"><em>Sua lista, nossa gôndola.</em></p>
+            <p class="texto">Faixa da unidade mais próxima, cupom neste aparelho e atalhos de celular para a lista. A unidade perto e a lista ficam à mão o tempo todo.</p>
+          </div>
+          <span class="selo">Para escolha</span>
+        </article>
+      </div>
+    </div>
+    <footer class="foot"><span>Rede Serve Mais</span><span>3</span></footer>
+  </section>
+
+  <section class="page">
+    <header class="top">
+      <img src="logo.png" alt="Rede Serve Mais">
+      <p>Folha de escolha</p>
+    </header>
+    <div class="pad">
+      <p class="olho">Para devolver marcada</p>
+      <h2>O que a rede quer seguir.</h2>
+      <p class="lead">Marquem a etapa 1 e, se quiserem um site novo, uma única proposta. O que não for marcado fica fora do escopo.</p>
+      <div class="escolha">
+        <article class="bloco">
+          <h3>Etapa 1 · WordPress</h3>
+          <p class="sub">Manter a aplicação atual. R$ 10.000 por mês.</p>
+          <div class="opcoes duas">
+            <label class="op"><span class="caixa"></span> Sim, manter o WordPress</label>
+            <label class="op"><span class="caixa"></span> Não seguir com a etapa 1 agora</label>
+          </div>
+        </article>
+        <article class="bloco">
+          <h3>Site novo · uma proposta</h3>
+          <p class="sub">Escolham um número. Os outros quatro não entram juntos.</p>
+          <div class="opcoes cinco">
+            <label class="op"><span class="caixa"></span> 01 Catálogo</label>
+            <label class="op"><span class="caixa"></span> 02 Gôndola</label>
+            <label class="op"><span class="caixa"></span> 03 Família</label>
+            <label class="op"><span class="caixa"></span> 04 Mais perto</label>
+            <label class="op"><span class="caixa"></span> 05 Sua lista</label>
+            <label class="op"><span class="caixa"></span> Nenhuma neste momento</label>
+          </div>
+        </article>
+      </div>
+      <p class="nota">Os conceitos mostram a navegação e o tom de cada caminho. Preços de produto, endereços, horários e textos nesses sites são exemplos e serão trocados pelos dados oficiais da rede depois da escolha. O valor de R$ 10.000 por mês refere-se apenas à etapa 1.</p>
+      <p class="nota">Depois da marcação, o caminho escolhido é o que segue. Esta proposta não contrata as cinco de uma vez.</p>
+      <div class="assina">
+        <div><span></span><p>Nome</p></div>
+        <div><span></span><p>Data</p></div>
+      </div>
+    </div>
+    <footer class="foot"><span>11 de novembro de 2026</span><span>4</span></footer>
+  </section>
+</body>
+</html>

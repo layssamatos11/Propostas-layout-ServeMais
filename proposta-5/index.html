@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#BD1D1D">
+  <title>Rede Serve Mais — Sua lista, nossa gôndola</title>
+  <meta name="description" content="Proposta 5 da Rede Serve Mais: a lista vira a gôndola. Ofertas, lojas, Felitá, notícias e contato. Conteúdo demonstrativo.">
+  <link rel="icon" href="/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=DM+Mono:wght@500;700&family=Fraunces:ital,opsz,wght@1,9..144,560;1,9..144,700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <a class="skip" href="#conteudo">Ir para o conteúdo</a>
+  <p class="aviso">Proposta de design: preços, endereços, horários, vagas, notícias e textos são exemplos, a serem substituídos pelos dados oficiais da rede.</p>
+  <header id="topo">
+    <div class="util">
+      <p id="pertoStatus" class="status">Aberto agora na unidade mais próxima</p>
+      <button class="btn btn-yellow" type="button" data-act="alterar">Alterar</button>
+      <button class="btn btn-light util-card" type="button" data-act="card">Serve Mais Card</button>
+      <a class="sac" href="tel:+556596920358">SAC (65) 9692-0358</a>
+    </div>
+    <div class="bar wrap">
+      <a class="logo" href="#inicio" aria-label="Rede Serve Mais, início"><img src="/logo.png" alt="Rede Serve Mais"></a>
+      <nav id="navDesktop" aria-label="Principal"></nav>
+      <a class="btn btn-yellow btn-unidade" href="#lojas" data-nav-lojas>Encontrar uma unidade</a>
+      <button class="burger" type="button" data-act="open-menu" aria-label="Abrir menu" aria-expanded="false"><span></span></button>
+    </div>
+  </header>
+  <main id="conteudo" class="wrap" tabindex="-1"></main>
+  <footer>
+    <div class="wrap foot">
+      <div class="foot-marca">
+        <a class="placa" href="#inicio" aria-label="Rede Serve Mais, início"><img src="/logo.png" alt=""></a>
+        <p class="tag">Mais perto de você.</p>
+      </div>
+      <div>
+        <h2>Institucional</h2>
+        <a href="#ofertas">Ofertas</a>
+        <a href="#felita">Marca exclusiva</a>
+        <a href="#contato">Contato</a>
+        <a href="#trabalhe">Trabalhe conosco</a>
+        <a href="#noticias">Notícias</a>
+        <a href="#lojas">Nossas lojas</a>
+      </div>
+      <div>
+        <h2>Serve Mais Card</h2>
+        <button type="button" data-act="card">Faça seu cartão</button>
+        <a href="#contato">Atendimento</a>
+      </div>
+      <div>
+        <h2>Baixe nosso app!</h2>
+        <button class="btn btn-light" type="button" data-act="app" data-loja="App Store">App Store</button>
+        <button class="btn btn-light" type="button" data-act="app" data-loja="Play Store">Play Store</button>
+      </div>
+      <div>
+        <h2>SAC</h2>
+        <a href="tel:+556596920358">(65) 9692-0358</a>
+        <div class="sociais">
+          <button type="button" data-act="social" aria-label="Facebook">f</button>
+          <button type="button" data-act="social" aria-label="Instagram">ig</button>
+          <button type="button" data-act="social" aria-label="TikTok">tt</button>
+          <button type="button" data-act="social" aria-label="LinkedIn">in</button>
+        </div>
+      </div>
+    </div>
+    <div class="wrap legal">
+      <a href="#cookies">Política de cookies</a>
+      <a href="#privacidade">Política de privacidade</a>
+      <p>Conteúdo demonstrativo para fins de conceito visual.</p>
+    </div>
+  </footer>
+  <nav class="tabbar" aria-label="Atalhos">
+    <a href="#inicio" data-tab="inicio">Início</a>
+    <a href="#ofertas" data-tab="ofertas">Ofertas</a>
+    <a href="#lista" data-tab="lista">Lista <span data-list-badge hidden>0</span></a>
+    <a href="#lojas" data-tab="lojas">Lojas</a>
+  </nav>
+  <div id="menu" class="menu" hidden>
+    <div class="menu-panel">
+      <button class="x" type="button" data-act="close-menu" aria-label="Fechar menu">×</button>
+      <nav id="navMobile" aria-label="Menu"></nav>
+      <a class="btn btn-yellow" href="#lojas">Encontrar uma unidade</a>
+      <button class="btn btn-line" type="button" data-act="card">Faça seu cartão</button>
+      <a href="tel:+556596920358">SAC (65) 9692-0358</a>
+      <div class="sociais">
+        <button type="button" data-act="social" aria-label="Facebook">f</button>
+        <button type="button" data-act="social" aria-label="Instagram">ig</button>
+        <button type="button" data-act="social" aria-label="TikTok">tt</button>
+        <button type="button" data-act="social" aria-label="LinkedIn">in</button>
+      </div>
+    </div>
+  </div>
+  <div id="dialog" class="dialog" hidden>
+    <div class="dialog-card" role="dialog" aria-modal="true" aria-labelledby="dlgTitle">
+      <button class="x" type="button" data-act="close-dialog" aria-label="Fechar">×</button>
+      <div id="dlgBody"></div>
+    </div>
+  </div>
+  <div id="toast" role="status"></div>
+  <div id="printCupom" class="print-cupom"></div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

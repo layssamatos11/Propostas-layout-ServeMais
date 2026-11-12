@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#BD1D1D">
+  <title>Rede Serve Mais — Mais perto de você</title>
+  <meta name="description" content="Proposta 4 da Rede Serve Mais: ofertas, lojas, marca Felitá, notícias, vagas e contato. Conteúdo demonstrativo.">
+  <link rel="icon" href="/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <a class="skip" href="#conteudo">Ir para o conteúdo</a>
+  <p class="aviso">Proposta de design: preços, endereços, horários, vagas, notícias e textos são exemplos, a serem substituídos pelos dados oficiais da rede.</p>
+  <header id="topo">
+    <div class="bar wrap">
+      <a class="logo" href="#inicio" aria-label="Rede Serve Mais, início"><img src="/logo.png" alt="Rede Serve Mais"></a>
+      <nav id="navDesktop" aria-label="Principal"></nav>
+      <a class="btn btn-yellow btn-unidade" href="#lojas" data-nav-lojas>Encontrar uma unidade</a>
+      <button class="burger" type="button" data-act="open-menu" aria-label="Abrir menu" aria-expanded="false"><span></span></button>
+    </div>
+  </header>
+  <main id="conteudo" class="wrap" tabindex="-1"></main>
+  <footer>
+    <div class="wrap foot">
+      <div class="foot-marca">
+        <a class="placa" href="#inicio" aria-label="Rede Serve Mais, início"><img src="/logo.png" alt=""></a>
+        <p class="tag">Mais perto de você.</p>
+        <p>Mais por menos.</p>
+      </div>
+      <div>
+        <h2>Institucional</h2>
+        <a href="#institucional">A rede</a>
+        <a href="#ofertas">Ofertas</a>
+        <a href="#felita">Marca exclusiva</a>
+        <a href="#contato">Contato</a>
+        <a href="#trabalhe">Trabalhe conosco</a>
+        <a href="#noticias">Notícias</a>
+        <a href="#lojas">Nossas lojas</a>
+      </div>
+      <div>
+        <h2>Serve Mais Card</h2>
+        <button class="btn btn-yellow" type="button" data-act="card">Faça seu cartão</button>
+        <a href="#contato">Atendimento</a>
+      </div>
+      <div>
+        <h2>Baixe nosso app!</h2>
+        <button class="btn btn-ghost btn-light" type="button" data-act="app">App Store</button>
+        <button class="btn btn-ghost btn-light" type="button" data-act="app">Play Store</button>
+      </div>
+      <div>
+        <h2>SAC</h2>
+        <a class="sac" href="tel:+556596920358">(65) 9692-0358</a>
+        <div class="sociais" aria-label="Redes sociais">
+          <button type="button" data-act="social" aria-label="Facebook">f</button>
+          <button type="button" data-act="social" aria-label="Instagram">ig</button>
+          <button type="button" data-act="social" aria-label="TikTok">tt</button>
+          <button type="button" data-act="social" aria-label="LinkedIn">in</button>
+        </div>
+      </div>
+    </div>
+    <div class="wrap legal">
+      <a href="#cookies">Política de cookies</a>
+      <a href="#privacidade">Política de privacidade</a>
+      <p>Conteúdo demonstrativo para fins de conceito visual.</p>
+    </div>
+  </footer>
+  <nav class="tabbar" aria-label="Atalhos">
+    <a href="#inicio" data-tab="inicio"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1z" fill="currentColor"/></svg>Início</a>
+    <a href="#ofertas" data-tab="ofertas"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12 12 4h7v7l-8 8z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16.5" cy="7.5" r="1.3" fill="currentColor"/></svg>Ofertas</a>
+    <a href="#lojas" data-tab="lojas"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="2" fill="currentColor"/></svg>Lojas</a>
+  </nav>
+  <div class="menu" id="menu" hidden>
+    <div class="menu-top">
+      <img src="/logo.png" alt="" height="48">
+      <button class="x" type="button" data-act="close-menu" aria-label="Fechar menu">×</button>
+    </div>
+    <nav id="navMobile" aria-label="Menu"></nav>
+    <a class="btn btn-yellow" href="#lojas" data-nav-lojas>Encontrar uma unidade</a>
+    <button class="btn btn-ghost" type="button" data-act="card">Faça seu cartão</button>
+    <p class="menu-sac"><a href="tel:+556596920358">SAC (65) 9692-0358</a></p>
+    <div class="sociais" aria-label="Redes sociais">
+      <button type="button" data-act="social" aria-label="Facebook">f</button>
+      <button type="button" data-act="social" aria-label="Instagram">ig</button>
+      <button type="button" data-act="social" aria-label="TikTok">tt</button>
+      <button type="button" data-act="social" aria-label="LinkedIn">in</button>
+    </div>
+  </div>
+  <div class="dialog" id="dialog" hidden>
+    <div class="dialog-card" role="dialog" aria-modal="true" aria-labelledby="dlgTitle">
+      <button class="x" type="button" data-act="close-dialog" aria-label="Fechar">×</button>
+      <div id="dlgBody"></div>
+    </div>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+@media (min-width: 981px) {
+  .fab { display: none }
+}
+
+@media (max-width: 980px) {
+  .desk-nav, .header-cta, .header-lista { display: none }
+  .burger { display: grid; place-items: center }
+  .tabbar {
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 34;
+    background: #fff;
+    border-top: 1px solid var(--line);
+    padding: 4px 6px calc(6px + env(safe-area-inset-bottom));
+    justify-content: space-around;
+  }
+  .tabbar a, .tabbar button {
+    flex: 1;
+    background: none;
+    border: 0;
+    color: var(--muted);
+    font-size: .72rem;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    min-height: 52px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .tabbar [aria-current="page"] { color: var(--red) }
+  body { padding-bottom: calc(72px + env(safe-area-inset-bottom)) }
+  .fab { bottom: calc(76px + env(safe-area-inset-bottom)) }
+  .toast { bottom: calc(86px + env(safe-area-inset-bottom)) }
+  footer > div.wrap, .intro, .contact, .camp-grid, .mini-camps, .lojas-layout, .finder, .values, .stats-bar, .time {
+    grid-template-columns: 1fr;
+  }
+  .finder { grid-template-areas: "tools" "map" "list" }
+  .map-panel { position: static }
+  .time::before { width: 3px; height: auto; top: 8px; bottom: 0; left: 6px; right: auto }
+  .time li { padding-left: 28px }
+  .hero-grid { grid-template-columns: 1fr; padding-top: 32px }
+  .grid:not(.grid-sectors) { grid-template-columns: repeat(2, 1fr) }
+  .sectors { display: flex; overflow: auto; gap: 14px; scroll-snap-type: x mandatory; padding-bottom: 6px }
+  .sector { min-width: 108px; scroll-snap-align: start }
+  .form-grid { grid-template-columns: 1fr }
+  .field.full { grid-column: auto }
+}
+
+@media (max-width: 420px) {
+  .grid:not(.grid-sectors) { grid-template-columns: 1fr }
+  .stats { flex-wrap: wrap }
+  .stats div { border: 0 }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important }
+  .pcard:hover, .btn:hover, .sector:hover i, .mini:hover { transform: none }
+}

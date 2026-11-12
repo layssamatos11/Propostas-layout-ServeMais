@@ -1,0 +1,126 @@
+.lojas-layout { display: grid; grid-template-columns: minmax(300px, 420px) 1fr; gap: 20px; align-items: start }
+.finder {
+  display: grid;
+  grid-template-columns: minmax(300px, 420px) 1fr;
+  grid-template-areas: "tools map" "list map";
+  gap: 12px 20px;
+  align-items: start;
+}
+.finder-gap { margin-top: 18px }
+.loja-tools { grid-area: tools }
+.finder .map-panel { grid-area: map }
+.finder #lojaList { grid-area: list }
+.map-panel { position: sticky; top: calc(var(--header) + 16px) }
+.map {
+  position: relative;
+  height: min(72vh, 680px);
+  min-height: 420px;
+  border-radius: 28px;
+  overflow: hidden;
+  background: #F3EBE3;
+  border: 1px solid var(--line);
+}
+.map.compact { height: 360px; min-height: 280px }
+.map-canvas {
+  position: absolute;
+  inset: 0;
+  transform-origin: center center;
+  transition: transform .25s ease;
+  background-color: #F3EBE3;
+  background-image:
+    linear-gradient(#E6D9CC 1.5px, transparent 1.5px),
+    linear-gradient(90deg, #E6D9CC 1.5px, transparent 1.5px);
+  background-size: 64px 64px;
+}
+.region {
+  position: absolute;
+  font-size: .75rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(31, 26, 23, .38);
+}
+.region.cba { left: 16%; top: 14% }
+.region.vg { right: 10%; top: 18% }
+.river {
+  position: absolute;
+  left: 54%;
+  top: -5%;
+  width: 18px;
+  height: 120%;
+  border-radius: 20px;
+  background: linear-gradient(#F6E2B8, #F3D48A);
+  transform: rotate(8deg);
+  opacity: .8;
+}
+.pin {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--red);
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .22);
+  transform: translate(-50%, -50%);
+  padding: 0;
+  cursor: pointer;
+}
+.pin.on { width: 26px; height: 26px; background: var(--yellow); border-color: var(--red); z-index: 3 }
+.pin.dim { opacity: .25 }
+.map-pop {
+  position: absolute;
+  z-index: 4;
+  width: 220px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 12px 14px;
+  box-shadow: 0 12px 30px rgba(31, 26, 23, .16);
+  transform: translate(16px, -80%);
+}
+.map-pop.flip { transform: translate(calc(-100% - 16px), -80%) }
+.map-pop b { display: block; margin-bottom: 2px }
+.map-pop p { color: var(--muted); font-size: .82rem; margin-bottom: 8px }
+.zoom { position: absolute; right: 12px; top: 12px; z-index: 5; display: flex; flex-direction: column; gap: 6px }
+.zoom button {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.map-note {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  z-index: 5;
+  background: rgba(255, 255, 255, .9);
+  border-radius: 10px;
+  padding: 6px 8px;
+  font-size: .72rem;
+  color: var(--muted);
+  max-width: 240px;
+}
+.loja { background: #fff; border-radius: 18px; padding: 14px 16px; border: 1px solid var(--line); margin-bottom: 10px }
+.loja.is-on { box-shadow: 0 0 0 2px var(--red) }
+.loja-top { display: flex; gap: 10px; align-items: flex-start }
+.loja-status { margin-top: 6px }
+.num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--red);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: .8rem;
+  font-weight: 800;
+  flex: none;
+}
+.pill { display: inline-block; border-radius: 999px; padding: 2px 8px; font-size: .75rem; font-weight: 700 }
+.pill.on { background: #E5F6EA; color: var(--green) }
+.pill.off { background: #F3EEE8; color: var(--muted) }
+.pill.you { background: var(--yellow-soft); color: #6a5200 }
+.loja-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px }
+.loja-actions .btn { min-height: 40px; padding: 0 14px; font-size: .9rem }

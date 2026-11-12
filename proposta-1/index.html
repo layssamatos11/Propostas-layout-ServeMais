@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#BD1D1D">
+  <title>Rede Serve Mais — Cuiabá e Várzea Grande</title>
+  <meta name="description" content="Proposta 1 do site da Rede Serve Mais: ofertas da semana e 17 lojas em Cuiabá e Várzea Grande. Conteúdo demonstrativo.">
+  <link rel="icon" href="/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <a class="skip" href="#conteudo">Ir para o conteúdo</a>
+  <div class="demo" id="demo">
+    <p>Conteúdo demonstrativo: preços, endereços, horários e promoções são exemplos e serão trocados pelos dados oficiais da rede.</p>
+    <button type="button" data-act="dismiss-demo" aria-label="Fechar aviso">×</button>
+  </div>
+  <header id="topo">
+    <div class="bar">
+      <a class="logo" href="#inicio" aria-label="Rede Serve Mais, início"><img src="/logo.png" alt="Rede Serve Mais"></a>
+      <nav class="desk-nav" aria-label="Principal" id="navDesktop"></nav>
+      <button class="btn btn-line header-lista" type="button" data-act="open-lista">Lista <span class="count" id="fabCountDesk">0</span></button>
+      <a class="btn btn-r header-cta" href="#lojas">Encontrar uma unidade</a>
+      <button class="burger" type="button" data-act="open-menu" aria-label="Abrir menu"><span></span></button>
+    </div>
+  </header>
+  <main id="conteudo" tabindex="-1"></main>
+  <footer>
+    <div class="wrap">
+      <div>
+        <div class="foot-logo"><img src="/logo.png" alt=""></div>
+        <p class="foot-copy">Rede familiar de supermercados em Cuiabá e Várzea Grande, Mato Grosso.</p>
+      </div>
+      <div>
+        <h3>Navegação</h3>
+        <a href="#ofertas">Ofertas</a>
+        <a href="#lojas">Nossas lojas</a>
+        <a href="#setores">Setores</a>
+        <a href="#institucional">Institucional</a>
+        <a href="#contato">Contato</a>
+      </div>
+      <div>
+        <h3>Atendimento</h3>
+        <p>SAC: (65) 3000-0000 (exemplo)<br>sac@exemplo.com (exemplo)</p>
+      </div>
+      <div>
+        <h3>Siga a rede</h3>
+        <button class="btn btn-line btn-ig" type="button" data-act="social">Instagram</button>
+      </div>
+    </div>
+    <p class="legal wrap">Proposta 1 · Rede Serve Mais. Conteúdo demonstrativo para conceito visual. Razão social, CNPJ e política de privacidade: a publicar.</p>
+  </footer>
+  <nav class="tabbar" aria-label="Atalhos" id="tabbar"></nav>
+  <button class="fab" id="fab" type="button" data-act="open-lista">Minha lista <span class="count" id="fabCount">0</span></button>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="menu" id="menu" hidden>
+    <div class="menu-top">
+      <img src="/logo.png" alt="" height="52">
+      <button class="x" type="button" data-act="close-menu" aria-label="Fechar menu">×</button>
+    </div>
+    <nav id="navMobile" aria-label="Menu"></nav>
+    <a class="btn btn-r menu-cta" href="#lojas">Encontrar uma unidade</a>
+  </div>
+  <div class="backdrop" id="listaBack" hidden data-act="close-lista"></div>
+  <aside class="drawer" id="lista" hidden aria-label="Minha lista">
+    <div class="dhead">
+      <h2 class="drawer-title">Minha lista</h2>
+      <button class="x" type="button" data-act="close-lista" aria-label="Fechar lista">×</button>
+    </div>
+    <div class="body" id="listaBody"></div>
+    <div class="foot" id="listaFoot"></div>
+  </aside>
+  <div class="dialog" id="dialog" hidden>
+    <div class="dialog-card" role="dialog" aria-modal="true" aria-labelledby="dlgTitle">
+      <button class="x dialog-close" type="button" data-act="close-dialog" aria-label="Fechar">×</button>
+      <div id="dlgBody"></div>
+    </div>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
